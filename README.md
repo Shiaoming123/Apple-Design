@@ -1,57 +1,81 @@
 # Apple-Design
 
-![Apple-Design 项目示意：页面流程、组件契约、跨平台映射、可访问性与证据驱动验收](assets/apple-design-hero.png)
+[**English**](README.md) · [简体中文](README.zh-CN.md)
 
-**把设计原则变成可执行的页面、组件与交互。**
+![Apple-Design project overview showing page flows, component contracts, platform mapping, accessibility, and evidence-led review](assets/apple-design-hero.png)
 
-From intent to interface. · 中文设计实践 · 14 份参考手册 · 可运行交互示例
+> Turn design principles into executable pages, components, and interactions.
 
-参考 Apple Human Interface Guidelines 的独立设计实践 Skill。提供中文要点、原创案例、跨平台决策和可运行示例，用于辅助 AI 进行产品设计、审查与实现。
+Apple-Design is an independent design-practice Skill informed by the [Apple Human Interface Guidelines][apple-hig]. It gives AI coding agents a practical route from product intent to page architecture, interaction states, component contracts, cross-platform decisions, implementation, and verification.
 
-这是独立项目，未由 Apple Inc. 授权、赞助或认可。宣传图是 AI 生成概念示意，不是正式产品截图。Apple 及相关名称属于其权利人。
+The repository contains a concise Skill entry point, 14 progressively disclosed reference guides, and a runnable interaction lab. It is intended for product designers, independent developers, and AI-assisted teams working on new flows or improving existing interfaces.
 
-## 为什么使用 Apple-Design
+Apple-Design is not affiliated with, endorsed by, sponsored by, or approved by Apple Inc. The hero image is AI-generated concept art, not a shipped product screenshot. Apple and its product names are trademarks of their respective owners.
 
-“做得像 Apple”不是完整的设计需求。Apple-Design 将参考原则落到具体问题：页面首先表达什么、用户下一步做什么、组件如何响应、失败后如何恢复，以及同一个任务在不同平台上如何保持连贯。
+## Table of contents
 
-它适合产品设计师、独立开发者及使用 AI Agent 的团队，尤其适合已有应用的交互审查、核心页面设计和共享组件优化。它是一套设计工作方法与参考资料，不是组件库、应用模板，也不是一键换肤工具。
+- [Why Apple-Design](#why-apple-design)
+- [What is included](#what-is-included)
+- [Quick start](#quick-start)
+- [Use cases](#use-cases)
+- [Reference library](#reference-library)
+- [Interaction lab](#interaction-lab)
+- [Validation](#validation)
+- [Repository structure](#repository-structure)
+- [Contributing](#contributing)
+- [Sources, attribution, and license](#sources-attribution-and-license)
 
-工作顺序是：理解现有产品 → 选择相关参考 → 设计主流程与状态 → 映射目标平台 → 用实际交互验收。已有品牌、功能边界和已批准设计始终优先，不因追求某种风格扩大产品范围。
+## Why Apple-Design
 
-## 从哪里开始
+“Make it feel like Apple” is not a complete design requirement. Apple-Design turns broad principles into decisions an agent can act on:
 
-| 你在做什么 | 阅读 |
+- What is the user's primary task, and what information deserves first attention?
+- What happens in default, loading, empty, validation, failure, success, undo, and recovery states?
+- How should focus, keyboard input, touch, pointer input, assistive technology, and enlarged text behave?
+- Which domain semantics and design tokens should be shared across platforms, and which navigation or system behaviors must remain native?
+- What evidence is sufficient to call a design change verified?
+
+The Skill follows a simple operating model:
+
+```text
+Understand the existing product
+  → load only the relevant guidance
+  → design the primary flow and its states
+  → map the intent to each target platform
+  → verify in the environments actually exercised
+```
+
+Existing product scope, brand language, technical constraints, and approved design decisions take precedence. The Skill is a decision framework and reference library—not a component package, app template, or one-click visual theme.
+
+## What is included
+
+| Area | Coverage |
 | --- | --- |
-| 希望 AI 使用这套方法 | [Skill 入口](skills/apple-design/SKILL.md) |
-| 设计主要页面与完整流程 | [页面手册](skills/apple-design/references/page-playbook.md) |
-| 设计组件状态和行为 | [组件契约](skills/apple-design/references/component-contracts.md) |
-| 同一功能落地不同平台 | [跨平台手册](skills/apple-design/references/cross-platform-playbook.md) |
-| 获取可复用请求和交付格式 | [设计交付](skills/apple-design/references/design-delivery.md) |
-| 运行一个真实交互示例 | [交互实验](skills/apple-design/examples/interaction-lab/README.md) |
-| 查看研究范围与未穷尽内容 | [来源索引](skills/apple-design/references/sources.md) |
+| Product and pages | Workspaces, search and filtering, create/edit flows, calendars, settings, onboarding, reading and focus modes, plus empty/error/recovery states |
+| Components | Buttons, inputs, selection controls, lists, navigation, overlays, and feedback—including state, focus, validation, ownership of attributes, and fallbacks |
+| Visual foundations | Layout, hierarchy, materials, color, typography, icons, writing, motion, inclusion, and accessibility |
+| Platforms | Apple platform context plus practical mappings for Windows, Android, and the Web; shared meaning without forced pixel parity |
+| Delivery | Reusable prompts, design-review records, implementation guidance, and evidence boundaries |
+| Example | A dependency-free HTML/CSS/JavaScript interaction lab with model and browser checks |
 
-## 包含什么
+The Skill uses progressive disclosure: [`SKILL.md`](skills/apple-design/SKILL.md) remains the routing layer, while task-specific detail lives in the reference library. It does not reproduce the HIG, provide an exhaustive table of platform measurements, or redistribute Apple assets.
 
-- 页面：任务工作区、搜索与筛选、创建/编辑、日历、设置、首次使用、详情/阅读/专注，以及空、错误、等待和恢复状态。
-- 组件：按钮、输入、选择、列表、导航、浮层和反馈；不止默认外观，还包括焦点、键盘、属性归属、校验和降级。
-- 平台：iOS/iPadOS/macOS 的设计语境，以及 Windows、Android、Web 的工程映射；共享语义，不强求逐像素复制。
-- 基础：材质、层级、字体、色彩、图标、文案、动效、包容与可访问性。
-- 证据：一个无运行依赖的 HTML/CSS/JS 实验、Node 测试和可选浏览器验收。
+## Quick start
 
-采用渐进阅读：入口保持简短，按任务加载参考。它不是 Apple 官方文档翻译包，也不是像素尺寸大全。
-
-## 安装到 Codex
-
-先克隆仓库，或在 GitHub 使用 **Code → Download ZIP** 并解压：
+### 1. Clone or download
 
 ```sh
 git clone https://github.com/Shiaoming123/Apple-Design.git
 cd Apple-Design
 ```
 
-将完整的 `skills/apple-design` 文件夹复制到用户的 Skills 目录。不要只复制 `SKILL.md`：它依赖相邻的参考和示例。保留文件夹内的 LICENSE 和 PROVENANCE.md。若已有同名 Skill，先备份并比较，不直接覆盖未知修改。
+You can also use **Code → Download ZIP** on GitHub and extract the archive.
 
-Windows PowerShell 可在仓库根目录执行以下安装命令；目标已存在时会停止，不覆盖：
+### 2. Install the Skill in Codex
+
+Copy the complete `skills/apple-design` directory into your Codex Skills directory. Do not copy `SKILL.md` alone; it relies on the adjacent references and example. Keep the bundled `LICENSE` and `PROVENANCE.md` files.
+
+The following PowerShell command installs from the repository root and fails safely if a Skill with the same name already exists:
 
 ```powershell
 $skillRoot = if ($env:CODEX_HOME) {
@@ -60,151 +84,186 @@ $skillRoot = if ($env:CODEX_HOME) {
   Join-Path ([Environment]::GetFolderPath('UserProfile')) '.codex/skills'
 }
 $skillTarget = Join-Path $skillRoot 'apple-design'
-if (Test-Path -LiteralPath $skillTarget) { throw '同名 Skill 已存在，请先备份并比较。' }
+if (Test-Path -LiteralPath $skillTarget) {
+  throw 'An apple-design Skill already exists. Back it up and compare before replacing it.'
+}
 New-Item -ItemType Directory -Path $skillRoot -Force | Out-Null
 Copy-Item -LiteralPath './skills/apple-design' -Destination $skillTarget -Recurse
 ```
 
-默认目录通常为 `~/.codex/skills/apple-design`；若配置了 CODEX_HOME，则使用其 skills 子目录。重新载入会话后可使用：
+The usual destination is `~/.codex/skills/apple-design`; when `CODEX_HOME` is configured, use its `skills` subdirectory. Reload the session, then invoke `$apple-design` explicitly or let Codex select it when the task matches its description.
+
+### 3. Start with a bounded request
 
 ```text
-使用 $apple-design 为现有任务产品设计“今天”页面。
-保留品牌与信息架构，输出主流程、错误恢复、组件契约、
-宽窄窗口差异与验收步骤；不增加未经请求的功能。
+Use $apple-design to design the “Today” page for an existing learning product.
+Preserve the current brand and information architecture. Provide the primary flow,
+empty/loading/error and recovery states, component contracts, narrow and wide
+window behavior, keyboard access, and verification steps. Do not add features.
 ```
 
-本地既有调用名仍是 `$apple-design`。其他 Agent 的 Skills 目录与加载方式以该工具配置为准，不宣称全部宿主均已测试。
+Other agent hosts may use different Skill locations or discovery rules. Only the Codex layout above is documented here.
 
-## 三种典型用法
+## Use cases
 
-给 Agent 提供现有页面、代码或截图，并说明目标平台、用户任务和不可改动的约束。以下请求可以直接改写使用。
+Give the agent the existing page, code, screenshots, or design contract whenever available. State the target platforms, the user's task, and anything that must not change.
 
-### 1. 设计主要页面
+### Design a primary page
 
 ```text
-使用 $apple-design 设计学习产品的“今天”页面。
-目标：用户能发现当前学习任务，并快速继续上次进度。
-平台：手机触摸与可调整窗口的桌面端。
-保留现有导航与品牌。先交付信息层级、主流程、空/加载/错误状态、
-宽窄布局与键盘路径；设计确认前不要实现代码。
+Use $apple-design to design the Today page for a learning product.
+Goal: help users find the current study task and resume their last position.
+Targets: touch-first phone and resizable desktop window.
+Keep the current navigation and brand. Before implementation, deliver the
+information hierarchy, main flow, empty/loading/error states, responsive layout,
+and keyboard path.
 ```
 
-### 2. 审查并优化现有组件
+### Audit and improve a shared component
 
 ```text
-使用 $apple-design 检查现有编辑弹窗及共享 Input、Button 组件。
-关注字段标签、校验、失败保留输入、未保存退出保护和焦点恢复。
-先读取真实调用者；在已授权范围内做最小修复，保留业务语义。
-交付问题证据、修改文件和可复现的验证步骤。
+Use $apple-design to audit the existing edit dialog and shared Input and Button
+components. Review labels, validation, preservation of input after failure,
+unsaved-change protection, and focus restoration. Read real callers first;
+make the smallest authorized fix and preserve domain semantics. Report the
+evidence, changed files, and reproducible checks.
 ```
 
-### 3. 规划跨平台实现
+### Plan a cross-platform flow
 
 ```text
-使用 $apple-design 为同一列表—详情流程制定 iPadOS、Windows 和 Web 方案。
-分别说明可共享的领域状态与设计 token，以及导航、快捷键、
-窗口适配和系统反馈的差异。不更换现有技术栈。
-区分官方建议与工程映射，列出尚需原生环境验证的项目。
+Use $apple-design to plan one list-detail flow for iPadOS, Windows, and Web.
+Separate shared domain state and semantic tokens from platform-specific navigation,
+shortcuts, window adaptation, and system feedback. Keep the current stack.
+Label official guidance, engineering interpretation, and native checks still needed.
 ```
 
-一次有效交付应能回答：改进哪个任务、依据什么证据、改变哪些状态与行为、如何恢复失败、在哪个环境验证。无需为简单调整强制生成长篇设计文档；更多请求模板见[设计交付指南](skills/apple-design/references/design-delivery.md)。
+A useful delivery should identify the user task, current evidence, changed states and behavior, failure recovery, platform differences, and the environment used for verification. More request patterns and review formats are in the [design delivery guide](skills/apple-design/references/design-delivery.md).
 
-## 完整参考目录
+## Reference library
 
-| 层次 | 文档 | 主要用途 |
+| Layer | Guide | Use it for |
 | --- | --- | --- |
-| 原则 | [产品原则与平台](skills/apple-design/references/product-platforms.md) | 目的、自主、熟悉性及各平台体验基线 |
-| 基础 | [视觉基础](skills/apple-design/references/hig-foundations.md) | 布局、材质、色彩、字体、图标、动效与文案 |
-| 流程 | [交互模式](skills/apple-design/references/hig-patterns.md) | 导航、状态、表单、反馈与数据保护 |
-| 控件 | [组件指南](skills/apple-design/references/hig-components.md) | 导航容器、工具栏、控件与内容组织 |
-| 输入 | [输入与可访问性](skills/apple-design/references/input-accessibility.md) | 键盘、指针、手势、辅助技术与文字放大 |
-| 集成 | [技术体验](skills/apple-design/references/technology-experiences.md) | AI、同步、分享和系统集成的体验边界 |
-| 页面 | [页面设计手册](skills/apple-design/references/page-playbook.md) | 从目标、主流程到异常恢复的具体页面案例 |
-| 行为 | [组件契约](skills/apple-design/references/component-contracts.md) | 状态、属性、焦点、校验和交互约定 |
-| 适配 | [跨平台手册](skills/apple-design/references/cross-platform-playbook.md) | 共享边界、布局切换与平台特有行为 |
-| 实现 | [代码实现与验收](skills/apple-design/references/code-implementation.md) | Vue/React/HTML、语义 token 与产品优化 |
-| 交付 | [设计交付指南](skills/apple-design/references/design-delivery.md) | 请求模板、评审记录与验证报告 |
-| 设计工具 | [Figma 工作流](skills/apple-design/references/figma-workflow.md) | 设计文件与开发交接 |
-| 营销 | [营销页面](skills/apple-design/references/marketing-pages.md) | 仅用于明确要求的营销页面，不替代应用工作区设计 |
-| 维护 | [来源与覆盖范围](skills/apple-design/references/sources.md) | 官方入口、研究边界与更新方式 |
+| Principles | [Product principles and platforms](skills/apple-design/references/product-platforms.md) | Purpose, agency, familiarity, and Apple platform baselines |
+| Foundations | [Visual foundations](skills/apple-design/references/hig-foundations.md) | Layout, materials, color, type, icons, motion, and writing |
+| Patterns | [Interaction patterns](skills/apple-design/references/hig-patterns.md) | Navigation, forms, state, feedback, and data protection |
+| Components | [Component guidance](skills/apple-design/references/hig-components.md) | Navigation containers, toolbars, controls, and content organization |
+| Inputs | [Input and accessibility](skills/apple-design/references/input-accessibility.md) | Keyboard, pointer, gesture, assistive technology, and text scaling |
+| Technologies | [Technology experiences](skills/apple-design/references/technology-experiences.md) | AI, sync, sharing, identity, media, and system integrations |
+| Pages | [Page design playbook](skills/apple-design/references/page-playbook.md) | Concrete page contracts, flows, edge states, and recovery |
+| Behavior | [Component contracts](skills/apple-design/references/component-contracts.md) | States, properties, focus, validation, overlays, and feedback |
+| Adaptation | [Cross-platform playbook](skills/apple-design/references/cross-platform-playbook.md) | Shared boundaries, layout changes, and native conventions |
+| Implementation | [Code implementation and acceptance](skills/apple-design/references/code-implementation.md) | Vue, React, HTML, semantic tokens, and product refinement |
+| Delivery | [Design delivery](skills/apple-design/references/design-delivery.md) | Prompt patterns, review records, and verification reports |
+| Design tooling | [Figma workflow](skills/apple-design/references/figma-workflow.md) | Design-file organization and developer handoff |
+| Marketing | [Marketing-page boundary](skills/apple-design/references/marketing-pages.md) | Explicit marketing-page work, not application workspace design |
+| Maintenance | [Sources and coverage](skills/apple-design/references/sources.md) | Official entry points, research limits, and update practice |
 
-## 运行交互示例
+The guides are currently written in Simplified Chinese. Technical identifiers, commands, filenames, platform names, and interface semantics remain unchanged.
 
-示例展示列表选择、标题编辑、校验、模拟保存失败、重试及焦点返回，并提供深色与减少透明度切换。它是可操作的工程示例，与顶部的 AI 概念图并非同一套界面。
+## Interaction lab
 
-从仓库根目录启动本地静态服务（需 Python 3；也可使用已有静态服务器）：
+The original interaction lab demonstrates list selection, title editing, validation, simulated save failure, retry, unsaved-change protection, and focus restoration. It also provides dark appearance and reduced-transparency controls. The lab is an executable engineering example and is separate from the AI-generated hero illustration.
+
+Start a local static server from the repository root with Python 3, or use an existing static-file server:
 
 ```sh
 python -m http.server 18542 --bind 127.0.0.1 --directory skills/apple-design/examples/interaction-lab
 ```
 
-打开 <http://127.0.0.1:18542>，按[实验步骤](skills/apple-design/examples/interaction-lab/README.md)操作；结束时在终端按 Ctrl+C。ES 模块需要 HTTP 服务，不保证直接双击 HTML 可用。
+Open <http://127.0.0.1:18542> and follow the [interaction-lab walkthrough](skills/apple-design/examples/interaction-lab/README.md). Stop the server with Ctrl+C. The ES modules require HTTP; direct `file://` opening is not supported.
 
-所有任务都是虚构数据，修改仅在内存中，刷新即重置。示例没有生产持久化、权限管理、同步或并发冲突处理。
+All tasks are fictional and state exists only in memory. Refreshing resets the example. It does not implement production persistence, authorization, synchronization, or concurrent-edit conflict handling.
 
-## 验证与预览
+## Validation
 
-安装 Skill 不需要 Node 或 Python。运行开发检查才需要 Node 22+；浏览器测试另需 Playwright Core 和本机浏览器。
+Installing the Skill requires neither Node.js nor Python. Repository checks require Node.js 22 or later. The browser check additionally uses the locked Playwright Core development dependency and a locally installed Chrome, Edge, or Chromium executable.
 
 ```powershell
-node scripts/check-package.mjs
-node --test tests/model.test.mjs
 npm ci
-# 指向本机 Chrome/Edge 可执行文件；不下载浏览器
+npm run check
+npm test
+
+# Optional rendered interaction check; no browser is downloaded.
 $env:BROWSER_EXECUTABLE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
 npm run test:browser
 ```
 
-交互预览见示例目录的 README。测试数据只在内存；模拟失败不是生产网络。Windows/Edge 结果不代表 SwiftUI、WinUI、Compose 或真机通过。
+### Current evidence
 
-### 已验证与未验证
+Verified locally on 2026-09-11:
 
-2026-09-11 的本地验证记录：
-
-| 检查 | 结果与边界 |
+| Check | Result and boundary |
 | --- | --- |
-| 发布包 | 本地链接、许可声明、个人路径规则、资源边界与 Skill 入口检查通过；不等同于完整安全审计 |
-| 模型测试 | 3 项通过：标题边界、保存结果、失败与重试 |
-| 浏览器交互 | Windows / Edge Chromium 152.0.4191.66 通过；覆盖校验、失败保留草稿、未保存关闭保护和焦点恢复 |
-| 显示与适配 | 1440 / 390 / 320 CSS px 宽度、长文本、200% CSS 文字、深色不透明与强制颜色检查通过 |
-| 运行错误 | 浏览器验收中 page error 与 console error 均为 0 |
-| 尚未验证 | Safari、Firefox、屏幕阅读器人工验收、原生壳、模拟器与真机；未获得无障碍合规认证 |
+| Package integrity | Local links, license notices, personal-path rules, asset boundary, and Skill entry passed; this is not a full security audit |
+| Model tests | 3 passed: title boundaries, successful save behavior, and simulated failure/retry |
+| Browser interaction | Passed on Windows with Edge Chromium 152.0.4191.66; covered validation, draft preservation, unsaved-close protection, and focus restoration |
+| Layout and display | Passed at 1440, 390, and 320 CSS-pixel widths, with long text, 200% CSS text, dark opaque mode, and forced colors |
+| Runtime errors | 0 page errors and 0 console errors during the browser run |
+| Not verified | Safari, Firefox, manual screen-reader use, native shells, simulators, or physical devices; no accessibility certification is claimed |
 
-截图由浏览器检查写入 `artifacts/`，该目录不入库。执行 `npm ci` 会获取锁定的开发依赖；测试复用本机 Chromium 浏览器，不自动下载浏览器，也不启动付费服务。`package.json` 的 `private: true` 用于避免误发 npm，不影响 GitHub 仓库公开。
+Browser screenshots are written to the ignored `artifacts/` directory. `npm ci` downloads the locked development dependency; the test reuses a local Chromium browser and does not download a browser or call paid services. The package is marked `private: true` to prevent accidental npm publication; this does not affect the public GitHub repository.
 
-## 仓库结构
+## Repository structure
 
 ```text
 Apple-Design/
-├── README.md                   项目介绍、安装与导航
-├── LICENSE                     上游及新增贡献的许可声明
-├── RELEASE_CHECKLIST.md         发布门槛与复核记录
-├── assets/                     宣传图与生成提示词
+├── README.md / README.zh-CN.md  English primary documentation and Chinese version
+├── LICENSE                      Upstream and new-contribution license notices
+├── RELEASE_CHECKLIST.md         Release gates and verification record
+├── assets/                      Hero artwork and generation prompts
 ├── skills/apple-design/
-│   ├── SKILL.md                Agent 入口
-│   ├── agents/openai.yaml      Codex 展示元数据
-│   ├── LICENSE / PROVENANCE.md  随 Skill 分发的许可与来源
-│   ├── references/             14 份按需读取的参考
-│   └── examples/interaction-lab/  无运行依赖的交互示例
-├── scripts/                    发布包及浏览器检查
-└── tests/                      示例模型测试
+│   ├── SKILL.md                 Agent entry point and reference router
+│   ├── agents/openai.yaml       Codex-facing metadata
+│   ├── LICENSE / PROVENANCE.md  Redistributed license and source history
+│   ├── references/              14 task-specific guides
+│   └── examples/interaction-lab/  Dependency-free interactive example
+├── scripts/                     Package and rendered-browser checks
+└── tests/                       Interaction-model tests
 ```
 
-## 贡献与维护
+## Contributing
 
-欢迎通过 Issue 报告可复现的交互问题、失效来源或平台差异，并通过 Pull Request 提交有证据的小范围改进。
+Reproducible interaction issues, stale sources, and documented platform differences are welcome as Issues or focused Pull Requests.
 
-- 文档变更：给出适用平台、官方来源及核对日期，区分官方建议和项目的工程解释；不要提交官方文档的批量复制或全量翻译。
-- 示例变更：说明用户流程、失败状态及验证方式；不要提交真实用户数据、密钥、官方字体或未获许可的资源。
-- 代码变更：运行 `npm run check`、`npm test`，涉及可见交互时再运行 `npm run test:browser`；记录未验证的平台。
-- 系统行为、尺寸或资源条款可能变化。维护时以对应官方来源为准，不把示例中的色值、圆角、断点或 CSS 模糊参数当作 Apple 的统一标准。
+- Documentation changes should identify the applicable platform, primary source, and verification date. Keep official guidance separate from project-authored engineering interpretation; do not submit bulk copies or full translations of Apple documentation.
+- Example changes should describe the user flow, failure behavior, and verification method. Do not include real user data, secrets, Apple fonts, official screenshots, or unlicensed assets.
+- Code changes should run `npm run check` and `npm test`; run `npm run test:browser` when visible behavior changes. State which platforms remain unverified.
+- System behavior, measurements, and resource terms can change. Recheck the relevant primary source instead of treating the example's colors, radii, breakpoints, or CSS blur values as Apple requirements.
 
-版本以 `package.json` 为准。正式标签应指向实际已验证提交；本项目不以宣传图或测试通过推断所有宿主和平台均受支持。
+The current project version is declared in `package.json`. Release tags should point to an actually verified commit. Neither the hero image nor a passing Web check implies compatibility with every agent host or native platform.
 
-## 许可证与来源
+## Sources, attribution, and license
 
-项目源自 [SudewaJay/apple-design-skill](https://github.com/SudewaJay/apple-design-skill)，保留 Sudewa 的 MIT 版权与许可，并加入中文重写、原创工程手册和示例。不是从零无上游项目。
+Apple-Design uses primary Apple design documentation as a reference layer, including [Apple Design][apple-design], [Design Pathway][apple-pathway], the [Human Interface Guidelines][apple-hig], [Design Resources][apple-resources], and the HIG sections for [Foundations][apple-foundations], [Patterns][apple-patterns], [Components][apple-components], [Inputs][apple-inputs], and [Technologies][apple-technologies]. Apple documentation remains authoritative; summaries in this repository are independent interpretations, not official translations.
 
-[MIT](LICENSE) 仅覆盖贡献者有权许可的项目内容，不许可 Apple 文档、商标、字体、图标或其它第三方资产。名称 Apple-Design 的商标使用风险仍存在；免责声明不是授权。
+The project derives from [`SudewaJay/apple-design-skill`][upstream] at the upstream revision recorded in [`PROVENANCE.md`](skills/apple-design/PROVENANCE.md). The original MIT copyright and license notice are retained, and this repository identifies its rewritten guidance, original engineering playbooks, runnable example, and generated artwork. It must not be represented as having no upstream relationship.
 
-请阅读 [来源与授权边界](skills/apple-design/PROVENANCE.md) 和 [发布检查](RELEASE_CHECKLIST.md)。版权检查不是法律意见，不承诺所有地区零风险。
+The repository [MIT License](LICENSE) applies only to material the contributors have the right to license. It does not license Apple documentation, trademarks, fonts, icons, screenshots, design resources, or other third-party assets. Read the complete [source and authorization boundary](skills/apple-design/PROVENANCE.md), [coverage index](skills/apple-design/references/sources.md), and [release record](RELEASE_CHECKLIST.md). This documentation is not legal advice and does not guarantee zero risk in every jurisdiction.
+
+### Primary references
+
+1. Apple, [Design][apple-design].
+2. Apple, [Design Pathway][apple-pathway].
+3. Apple, [Human Interface Guidelines][apple-hig].
+4. Apple, [Design Resources][apple-resources].
+5. Apple, [HIG: Foundations][apple-foundations].
+6. Apple, [HIG: Patterns][apple-patterns].
+7. Apple, [HIG: Components][apple-components].
+8. Apple, [HIG: Inputs][apple-inputs].
+9. Apple, [HIG: Technologies][apple-technologies].
+10. Apple, [Guidelines for Using Apple Trademarks and Copyrights][apple-trademark-guidelines].
+
+Last source review: **2026-09-11**. See the [coverage index](skills/apple-design/references/sources.md) for the distinction between indexed topics and guidance verified in detail.
+
+[apple-design]: https://developer.apple.com/design/
+[apple-pathway]: https://developer.apple.com/design/get-started/
+[apple-hig]: https://developer.apple.com/design/human-interface-guidelines/
+[apple-resources]: https://developer.apple.com/design/resources/
+[apple-foundations]: https://developer.apple.com/design/human-interface-guidelines/foundations
+[apple-patterns]: https://developer.apple.com/design/human-interface-guidelines/patterns
+[apple-components]: https://developer.apple.com/design/human-interface-guidelines/components
+[apple-inputs]: https://developer.apple.com/design/human-interface-guidelines/inputs
+[apple-technologies]: https://developer.apple.com/design/human-interface-guidelines/technologies
+[apple-trademark-guidelines]: https://www.apple.com/legal/intellectual-property/guidelinesfor3rdparties.html
+[upstream]: https://github.com/SudewaJay/apple-design-skill
