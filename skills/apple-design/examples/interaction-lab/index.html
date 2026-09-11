@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apple-Design · 交互实验室</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+<body>
+<header class="chrome">
+  <div><strong>交互实验室</strong><p>独立工程示例 · 非 Apple 官方界面</p></div>
+  <div class="preferences">
+    <button id="theme" type="button" aria-pressed="false">深色模式</button>
+    <button id="glass" type="button" aria-pressed="false">减少透明度</button>
+  </div>
+</header>
+<main>
+  <div class="intro"><p class="eyebrow">PAGE FLOW / COMPONENT CONTRACT</p><h1>把下一步，设计清楚。</h1>
+    <p>试着修改标题、模拟保存失败，再缩窄窗口。草稿属于这次编辑，布局变化不会替你提交。</p></div>
+  <div class="workspace">
+    <section aria-labelledby="list-title"><h2 id="list-title">今天</h2>
+      <ul id="tasks">
+        <li><button type="button" data-task="0" aria-current="true">复盘页面方案</button></li>
+        <li><button type="button" data-task="1">检查键盘与焦点</button></li>
+        <li><button type="button" data-task="2">验证窄窗口布局</button></li>
+      </ul>
+    </section>
+    <section class="detail" aria-labelledby="detail-title">
+      <p class="eyebrow">当前任务</p><h2 id="detail-title">复盘页面方案</h2>
+      <p>先验证主要动作、错误恢复和完整内容，再决定视觉细节。</p>
+      <button id="edit" class="primary" type="button">编辑标题</button>
+    </section>
+  </div>
+  <p id="status" role="status">仅内存演示；刷新会还原，不写入你的任务数据。</p>
+  <details><summary>这个示例验证什么？</summary><p>有名称的字段、校验错误、失败保留、模态焦点、长文换行，以及深浅色和材质回退。不是生产级存储、同步或原生平台实现。</p></details>
+</main>
+<dialog id="editor" aria-labelledby="editor-title">
+  <form id="form" novalidate aria-busy="false">
+    <header><p class="eyebrow">EDIT / RECOVER</p><h2 id="editor-title">编辑任务标题</h2></header>
+    <div class="form-body">
+      <label for="title">任务标题</label>
+      <input id="title" name="title" required maxlength="120" aria-describedby="hint error">
+      <p id="hint">用一句话描述要完成的事，详细内容留给备注。</p>
+      <p id="error" role="alert" hidden></p>
+      <label class="check"><input id="fail" type="checkbox">模拟本次保存失败</label>
+      <section id="discard" hidden aria-labelledby="discard-title">
+        <h3 id="discard-title">放弃未保存的修改？</h3>
+        <p>当前输入尚未提交，继续编辑可以保留它。</p>
+        <button id="continue" type="button">继续编辑</button>
+        <button id="discard-confirm" type="button">放弃修改</button>
+      </section>
+    </div>
+    <footer><button id="cancel" type="button">取消</button><button id="save" class="primary" type="submit">保存更改</button></footer>
+  </form>
+</dialog>
+<script type="module" src="app.mjs"></script>
+</body>
+</html>
