@@ -1,16 +1,33 @@
+<div align="center">
+
+<sub>INDEPENDENT DESIGN PRACTICE · AI-ASSISTED PRODUCT WORK</sub>
+
 # Apple-Design
+
+### From intent to interface.
+
+Turn design principles into executable pages, components, and interactions.
+
+[**Get started**](#quick-start) · [Explore the guides](#reference-library) · [Run the interaction lab](#interaction-lab)
 
 [**English**](README.md) · [简体中文](README.zh-CN.md)
 
-![Apple-Design project overview showing page flows, component contracts, platform mapping, accessibility, and evidence-led review](assets/apple-design-hero.png)
+</div>
 
-> Turn design principles into executable pages, components, and interactions.
+<p align="center">
+  <img src="assets/apple-design-hero.png" width="1200" alt="Apple-Design project overview showing page flows, component contracts, platform mapping, accessibility, and evidence-led review">
+</p>
+
+<p align="center"><sub>14 focused guides · Page flows · Component contracts · Cross-platform mapping · Evidence-led review</sub></p>
+
+---
 
 Apple-Design is an independent design-practice Skill informed by the [Apple Human Interface Guidelines][apple-hig]. It gives AI coding agents a practical route from product intent to page architecture, interaction states, component contracts, cross-platform decisions, implementation, and verification.
 
 The repository contains a concise Skill entry point, 14 progressively disclosed reference guides, and a runnable interaction lab. It is intended for product designers, independent developers, and AI-assisted teams working on new flows or improving existing interfaces.
 
-Apple-Design is not affiliated with, endorsed by, sponsored by, or approved by Apple Inc. The hero image is AI-generated concept art, not a shipped product screenshot. Apple and its product names are trademarks of their respective owners.
+> [!IMPORTANT]
+> Apple-Design is not affiliated with, endorsed by, sponsored by, or approved by Apple Inc. The hero image is AI-generated concept art, not a shipped product screenshot. Apple and its product names are trademarks of their respective owners.
 
 ## Table of contents
 

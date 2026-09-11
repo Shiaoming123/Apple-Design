@@ -1,16 +1,31 @@
+<div align="center">
+
+<sub>独立设计实践 · AI 辅助产品工作</sub>
+
 # Apple-Design
+
+### From intent to interface.
+
+把设计原则变成可执行的页面、组件与交互。
+
+[**开始使用**](#安装到-codex) · [浏览参考](#完整参考目录) · [运行交互实验](#运行交互示例)
 
 [English](README.md) · **简体中文**
 
-![Apple-Design 项目示意：页面流程、组件契约、跨平台映射、可访问性与证据驱动验收](assets/apple-design-hero.png)
+</div>
 
-**把设计原则变成可执行的页面、组件与交互。**
+<p align="center">
+  <img src="assets/apple-design-hero.png" width="1200" alt="Apple-Design 项目示意：页面流程、组件契约、跨平台映射、可访问性与证据驱动验收">
+</p>
 
-From intent to interface. · 中文设计实践 · 14 份参考手册 · 可运行交互示例
+<p align="center"><sub>14 份专题手册 · 页面流程 · 组件契约 · 跨平台映射 · 证据驱动验收</sub></p>
+
+---
 
 参考 Apple Human Interface Guidelines 的独立设计实践 Skill。提供中文要点、原创案例、跨平台决策和可运行示例，用于辅助 AI 进行产品设计、审查与实现。
 
-这是独立项目，未由 Apple Inc. 授权、赞助或认可。宣传图是 AI 生成概念示意，不是正式产品截图。Apple 及相关名称属于其权利人。
+> [!IMPORTANT]
+> 这是独立项目，未由 Apple Inc. 授权、赞助或认可。宣传图是 AI 生成概念示意，不是正式产品截图。Apple 及相关名称属于其权利人。
 
 ## 为什么使用 Apple-Design
 
