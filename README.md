@@ -18,13 +18,13 @@ Turn design principles into executable pages, components, and interactions.
   <img src="assets/apple-design-hero.png" width="1200" alt="Apple-Design project overview showing page flows, component contracts, platform mapping, accessibility, and evidence-led review">
 </p>
 
-<p align="center"><sub>14 focused guides · Page flows · Component contracts · Cross-platform mapping · Evidence-led review</sub></p>
+<p align="center"><sub>15 focused guides · Page flows · Component contracts · Cross-platform mapping · Evidence-led review</sub></p>
 
 ---
 
 Apple-Design is an independent design-practice Skill informed by the [Apple Human Interface Guidelines][apple-hig]. It gives AI coding agents a practical route from product intent to page architecture, interaction states, component contracts, cross-platform decisions, implementation, and verification.
 
-The repository contains a concise Skill entry point, 14 progressively disclosed reference guides, and a runnable interaction lab. It is intended for product designers, independent developers, and AI-assisted teams working on new flows or improving existing interfaces.
+The repository contains a concise Skill entry point, 15 progressively disclosed reference guides, and a runnable interaction lab. It is intended for product designers, independent developers, and AI-assisted teams working on new flows or improving existing interfaces.
 
 > [!IMPORTANT]
 > Apple-Design is not affiliated with, endorsed by, sponsored by, or approved by Apple Inc. The hero image is AI-generated concept art, not a shipped product screenshot. Apple and its product names are trademarks of their respective owners.
@@ -35,6 +35,7 @@ The repository contains a concise Skill entry point, 14 progressively disclosed 
 - [What is included](#what-is-included)
 - [Quick start](#quick-start)
 - [Use cases](#use-cases)
+- [Example case](#example-case)
 - [Reference library](#reference-library)
 - [Interaction lab](#interaction-lab)
 - [Validation](#validation)
@@ -157,6 +158,24 @@ Label official guidance, engineering interpretation, and native checks still nee
 
 A useful delivery should identify the user task, current evidence, changed states and behavior, failure recovery, platform differences, and the environment used for verification. More request patterns and review formats are in the [design delivery guide](skills/apple-design/references/design-delivery.md).
 
+## Example case
+
+### Tokens Counter — dense comparison workbench
+
+<p align="center">
+  <a href="https://tokens-counter.vercel.app/">
+    <img src="skills/apple-design/assets/case-studies/tokens-counter/repository/readme-screenshot.png" width="1200" alt="Tokens Counter desktop workbench with model selection, estimation inputs, comparison results, and recent history">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Shiaoming123/Tokens-Counter"><strong>Source repository</strong></a> ·
+  <a href="https://tokens-counter.vercel.app/"><strong>Live demo</strong></a> ·
+  <a href="skills/apple-design/references/case-studies.md"><strong>Case notes and evidence boundary</strong></a>
+</p>
+
+Tokens Counter demonstrates a stable “select → configure and input → compare results” relationship for a data-dense desktop Web workspace. It is a documented product example, not an Apple endorsement or a visual template to copy.
+
 ## Reference library
 
 | Layer | Guide | Use it for |
@@ -173,6 +192,7 @@ A useful delivery should identify the user task, current evidence, changed state
 | Implementation | [Code implementation and acceptance](skills/apple-design/references/code-implementation.md) | Vue, React, HTML, semantic tokens, and product refinement |
 | Delivery | [Design delivery](skills/apple-design/references/design-delivery.md) | Prompt patterns, review records, and verification reports |
 | Design tooling | [Figma workflow](skills/apple-design/references/figma-workflow.md) | Design-file organization and developer handoff |
+| Cases | [Documented product cases](skills/apple-design/references/case-studies.md) | Reusable information relationships with evidence and platform boundaries |
 | Marketing | [Marketing-page boundary](skills/apple-design/references/marketing-pages.md) | Explicit marketing-page work, not application workspace design |
 | Maintenance | [Sources and coverage](skills/apple-design/references/sources.md) | Official entry points, research limits, and update practice |
 
@@ -233,7 +253,7 @@ Apple-Design/
 │   ├── SKILL.md                 Agent entry point and reference router
 │   ├── agents/openai.yaml       Codex-facing metadata
 │   ├── LICENSE / PROVENANCE.md  Redistributed license and source history
-│   ├── references/              14 task-specific guides
+│   ├── references/              15 task-specific guides
 │   └── examples/interaction-lab/  Dependency-free interactive example
 ├── scripts/                     Package and rendered-browser checks
 └── tests/                       Interaction-model tests
