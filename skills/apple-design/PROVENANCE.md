@@ -38,6 +38,9 @@ Apple-Design 是独立维护的设计实践 Skill，未由 Apple Inc. 授权、�
 未输入 Apple 官方图片、Logo、字体或 SF Symbols 资源。图中生成的常见控件/图标不意味着取得任何第三方商标或外观权许可。
 本项目仅在依法有权许可的范围内将新增代码、文字及项目图按 MIT 提供；不保证生成图具有独占性、可登记性或在所有地区受到相同版权保护。
 
+## 外部产品案例
+
+`assets/case-studies/tokens-counter/` 收录 [Tokens Counter](https://github.com/Shiaoming123/Tokens-Counter) 的仓库截图，用于说明高密度桌面工作台的信息关系。截图固定到提交 [`758d686`](https://github.com/Shiaoming123/Tokens-Counter/tree/758d6867fdeb58c1bad028382560912f8ca0b76c)；来源项目在核验时以 [MIT License](https://github.com/Shiaoming123/Tokens-Counter/blob/758d6867fdeb58c1bad028382560912f8ca0b76c/LICENSE) 发布。案例中的产品名称、界面和图形仍归其各自权利人；收录不构成 Apple 的认可或认证。
+
 ## 发布前检查
 保留许可与来源声明，检查无私密路径/凭据/用户数据，核对包内资源与实际说明，验证示例。正式公开仍需维护者确认；此文不是 Apple 的授权书。
-

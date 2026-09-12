@@ -28,6 +28,7 @@ description: 基于 Apple 官方 Human Interface Guidelines 提炼、审查和�
 | AI、同步、分享、系统集成和特定领域 | [技术体验](references/technology-experiences.md) |
 | Vue/React/HTML、设计 token 和已有应用优化 | [跨平台实现与验收](references/code-implementation.md) |
 | Figma 设计交付 | [Figma](references/figma-workflow.md) |
+| 查找真实案例与可复用模式 | [案例索引](references/case-studies.md)；案例是带边界的证据，不是视觉模板 |
 | 官方目录、覆盖范围、刷新规范 | [来源与维护](references/sources.md) |
 | 用户明确要营销页 | [营销页边界](references/marketing-pages.md)，不套用到应用工作区 |
 
@@ -53,3 +54,4 @@ description: 基于 Apple 官方 Human Interface Guidelines 提炼、审查和�
 
 记录“场景 → 当前证据 → 对应官方原则 → 最小改动 → 验证结果”。先修复阻碍操作、信息丢失、焦点错误和可读性，再处理视觉密度与细节。用一个真实主流程检验共享组件修复，同时抽查其它调用者。报告实际改动和证据；浏览器、原生壳、模拟器、真机分别标注，不互相替代。
 
+需要前后对比时，先把未经修饰的当前实现截图复制到 `assets/case-studies/<project>/before/`，并在同目录记录提交、数据、主题、视口、时间和证据类型。只有改动已经真实实现并通过对应环境的交互检查后，才用相同条件生成 `after` 截图和对比板；不得用概念稿冒充实现结果，也不得跨平台替代证据。已有案例及其适用边界见 [案例索引](references/case-studies.md)。
