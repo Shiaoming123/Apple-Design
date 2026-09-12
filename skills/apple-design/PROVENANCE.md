@@ -1,6 +1,6 @@
 # 来源、授权与公开发布边界
 
-核对日期：2026-09-11。本文是工程发布风险记录，不是律师意见或无侵权保证。
+核对日期：2026-09-12。本文是工程发布风险记录，不是律师意见或无侵权保证。
 
 ## 项目身份
 Apple-Design 是独立维护的设计实践 Skill，未由 Apple Inc. 授权、赞助、认证或批准。Apple 及其相关产品、技术名称的商标权属于各自权利人；本文中的提及用于识别参考来源与平台。
@@ -41,6 +41,8 @@ Apple-Design 是独立维护的设计实践 Skill，未由 Apple Inc. 授权、�
 ## 外部产品案例
 
 `assets/case-studies/tokens-counter/` 收录 [Tokens Counter](https://github.com/Shiaoming123/Tokens-Counter) 的仓库截图，用于说明高密度桌面工作台的信息关系。截图固定到提交 [`758d686`](https://github.com/Shiaoming123/Tokens-Counter/tree/758d6867fdeb58c1bad028382560912f8ca0b76c)；来源项目在核验时以 [MIT License](https://github.com/Shiaoming123/Tokens-Counter/blob/758d6867fdeb58c1bad028382560912f8ca0b76c/LICENSE) 发布。案例中的产品名称、界面和图形仍归其各自权利人；收录不构成 Apple 的认可或认证。
+
+`examples/refactor-gallery/` 使用 [Spree Storefront](https://github.com/spree/storefront)、[shadcn/ui](https://github.com/shadcn-ui/ui) 与 [Puck](https://github.com/puckeditor/puck) 作为三类任务原型的研究来源；核验时三者均以 MIT 许可发布。完整上游应用、源码、商标、图片和在线 Demo 数据未复制到本包。画廊的虚构品牌、固定数据、HTML、CSS、JavaScript、CSS 图形及 `assets/case-studies/refactor-gallery/` 截图均为本项目制作；Before 是来源启发的本地适配基线，不是上游页面原样副本。
 
 ## 发布前检查
 保留许可与来源声明，检查无私密路径/凭据/用户数据，核对包内资源与实际说明，验证示例。正式公开仍需维护者确认；此文不是 Apple 的授权书。

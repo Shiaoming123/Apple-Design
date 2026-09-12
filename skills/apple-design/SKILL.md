@@ -21,7 +21,7 @@ description: 基于 Apple 官方 Human Interface Guidelines 提炼、审查和�
 | 从需求设计主要页面与完整流程 | [页面设计手册](references/page-playbook.md)，含工作区、搜索、编辑、日历、设置、阅读与恢复 |
 | 深化组件的状态、输入与行为 | [组件契约](references/component-contracts.md)，含属性归属、焦点、校验、模态与错误 |
 | 同一流程跨平台落地 | [跨平台手册](references/cross-platform-playbook.md)，含共享边界、布局切换和证据分层 |
-| 使用示例、评审和交付 | [交付指南](references/design-delivery.md)、[可运行交互实验](examples/interaction-lab/README.md) |
+| 使用示例、评审和交付 | [交付指南](references/design-delivery.md)、[可运行交互实验](examples/interaction-lab/README.md)、[Web 重构案例](examples/refactor-gallery/README.md) |
 | 交互流程、状态、文案、表单、数据保护 | [交互模式](references/hig-patterns.md) |
 | 导航、控件、弹层、工具栏、内容组织 | [组件](references/hig-components.md) |
 | 键盘、手势、指针、VoiceOver、字体放大 | [输入与可访问性](references/input-accessibility.md) |

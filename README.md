@@ -8,7 +8,7 @@
 
 Turn design principles into executable pages, components, and interactions.
 
-[**Get started**](#quick-start) · [Explore the guides](#reference-library) · [Run the interaction lab](#interaction-lab)
+[**Get started**](#quick-start) · [Explore the guides](#reference-library) · [View refactor cases](#web-refactor-gallery)
 
 [**English**](README.md) · [简体中文](README.zh-CN.md)
 
@@ -24,7 +24,7 @@ Turn design principles into executable pages, components, and interactions.
 
 Apple-Design is an independent design-practice Skill informed by the [Apple Human Interface Guidelines][apple-hig]. It gives AI coding agents a practical route from product intent to page architecture, interaction states, component contracts, cross-platform decisions, implementation, and verification.
 
-The repository contains a concise Skill entry point, 15 progressively disclosed reference guides, and a runnable interaction lab. It is intended for product designers, independent developers, and AI-assisted teams working on new flows or improving existing interfaces.
+The repository contains a concise Skill entry point, 15 progressively disclosed reference guides, a runnable interaction lab, and three reproducible Web refactor cases. It is intended for product designers, independent developers, and AI-assisted teams working on new flows or improving existing interfaces.
 
 > [!IMPORTANT]
 > Apple-Design is not affiliated with, endorsed by, sponsored by, or approved by Apple Inc. The hero image is AI-generated concept art, not a shipped product screenshot. Apple and its product names are trademarks of their respective owners.
@@ -35,7 +35,7 @@ The repository contains a concise Skill entry point, 15 progressively disclosed 
 - [What is included](#what-is-included)
 - [Quick start](#quick-start)
 - [Use cases](#use-cases)
-- [Example case](#example-case)
+- [Example cases](#example-cases)
 - [Reference library](#reference-library)
 - [Interaction lab](#interaction-lab)
 - [Validation](#validation)
@@ -158,7 +158,7 @@ Label official guidance, engineering interpretation, and native checks still nee
 
 A useful delivery should identify the user task, current evidence, changed states and behavior, failure recovery, platform differences, and the environment used for verification. More request patterns and review formats are in the [design delivery guide](skills/apple-design/references/design-delivery.md).
 
-## Example case
+## Example cases
 
 ### Tokens Counter — dense comparison workbench
 
@@ -175,6 +175,44 @@ A useful delivery should identify the user task, current evidence, changed state
 </p>
 
 Tokens Counter demonstrates a stable “select → configure and input → compare results” relationship for a data-dense desktop Web workspace. It is a documented product example, not an Apple endorsement or a visual template to copy.
+
+### Web refactor gallery
+
+Three runnable comparisons cover commerce, analytics, and content editing. Each pair uses the same core data at the same viewport; the After version changes information hierarchy, component behavior, feedback, and responsive rules—not the product task.
+
+The task archetypes were selected from permissively licensed open-source projects: [Spree Storefront](https://github.com/spree/storefront), [shadcn/ui `dashboard-01`](https://ui.shadcn.com/blocks), and [Puck](https://github.com/puckeditor/puck). To keep the Skill small and redistributable, the gallery uses project-authored HTML/CSS/JavaScript, fictional data, and CSS artwork rather than vendoring those applications or their brands and media. See the [source research](research/prototype-sources.md), [runnable gallery](skills/apple-design/examples/refactor-gallery/README.md), and [evidence boundary](skills/apple-design/references/case-studies.md).
+
+#### Product detail and purchase
+
+<table>
+  <tr><th width="50%">Before · competing hierarchy</th><th width="50%">After · continuous purchase path</th></tr>
+  <tr>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/commerce/before.png" alt="Commerce baseline with generic navigation, promotion banner, product media, options, and competing actions"></td>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/commerce/after.png" alt="Refactored product detail page with product-first hierarchy, clear options, fulfilment information, and one purchase action"></td>
+  </tr>
+</table>
+
+#### Operations dashboard
+
+<table>
+  <tr><th width="50%">Before · equal-weight metrics</th><th width="50%">After · decision and exception focus</th></tr>
+  <tr>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/dashboard/before.png" alt="Dashboard baseline with equal-weight KPI cards, generic chart, and alert list"></td>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/dashboard/after.png" alt="Refactored operations dashboard with data freshness, comparisons, trend context, and prioritized exception queue"></td>
+  </tr>
+</table>
+
+#### Content editor
+
+<table>
+  <tr><th width="50%">Before · administrative form</th><th width="50%">After · persistent editing context</th></tr>
+  <tr>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/editor/before.png" alt="Content editor baseline using a form and detached publish sidebar"></td>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/editor/after.png" alt="Refactored content editor with document canvas, save status, preview, and explicit publish boundary"></td>
+  </tr>
+</table>
+
+These are verified desktop Web implementations, not Apple UI replicas, official endorsements, native-platform evidence, or before/after screenshots of the upstream products.
 
 ## Reference library
 
@@ -212,6 +250,8 @@ Open <http://127.0.0.1:18542> and follow the [interaction-lab walkthrough](skill
 
 All tasks are fictional and state exists only in memory. Refreshing resets the example. It does not implement production persistence, authorization, synchronization, or concurrent-edit conflict handling.
 
+The [Web refactor gallery](skills/apple-design/examples/refactor-gallery/README.md) is a second dependency-free example. Run it on port `18543`, or regenerate and verify all six comparison screenshots with `npm run test:gallery`.
+
 ## Validation
 
 Installing the Skill requires neither Node.js nor Python. Repository checks require Node.js 22 or later. The browser check additionally uses the locked Playwright Core development dependency and a locally installed Chrome, Edge, or Chromium executable.
@@ -224,22 +264,24 @@ npm test
 # Optional rendered interaction check; no browser is downloaded.
 $env:BROWSER_EXECUTABLE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
 npm run test:browser
+npm run test:gallery
 ```
 
 ### Current evidence
 
-Verified locally on 2026-09-11:
+Verified locally on 2026-09-12:
 
 | Check | Result and boundary |
 | --- | --- |
 | Package integrity | Local links, license notices, personal-path rules, asset boundary, and Skill entry passed; this is not a full security audit |
-| Model tests | 3 passed: title boundaries, successful save behavior, and simulated failure/retry |
-| Browser interaction | Passed on Windows with Edge Chromium 152.0.4191.66; covered validation, draft preservation, unsaved-close protection, and focus restoration |
+| Model tests | 4 passed: interaction-lab title/save/failure behavior plus gallery route normalization |
+| Browser interaction | Passed on Windows with Edge Chromium 153.0.4234.32; covered validation, draft preservation, unsaved-close protection, and focus restoration |
+| Refactor gallery | Passed on Windows with Edge Chromium 153.0.4234.32; generated 6 screenshots and covered selection, cart feedback, date range, issue selection, autosave, publish confirmation, and focus restoration |
 | Layout and display | Passed at 1440, 390, and 320 CSS-pixel widths, with long text, 200% CSS text, dark opaque mode, and forced colors |
-| Runtime errors | 0 page errors and 0 console errors during the browser run |
+| Runtime errors | 0 page errors and 0 console errors in both browser checks |
 | Not verified | Safari, Firefox, manual screen-reader use, native shells, simulators, or physical devices; no accessibility certification is claimed |
 
-Browser screenshots are written to the ignored `artifacts/` directory. `npm ci` downloads the locked development dependency; the test reuses a local Chromium browser and does not download a browser or call paid services. The package is marked `private: true` to prevent accidental npm publication; this does not affect the public GitHub repository.
+Interaction-lab diagnostics are written to the ignored `artifacts/` directory; gallery comparisons are regenerated in the tracked `skills/apple-design/assets/case-studies/refactor-gallery/` directory. `npm ci` downloads the locked development dependency; the tests reuse a local Chromium browser and do not download a browser or call paid services. The package is marked `private: true` to prevent accidental npm publication; this does not affect the public GitHub repository.
 
 ## Repository structure
 
@@ -254,7 +296,8 @@ Apple-Design/
 │   ├── agents/openai.yaml       Codex-facing metadata
 │   ├── LICENSE / PROVENANCE.md  Redistributed license and source history
 │   ├── references/              15 task-specific guides
-│   └── examples/interaction-lab/  Dependency-free interactive example
+│   └── examples/                 Interaction lab and three-case refactor gallery
+├── research/                     Open-source prototype selection record
 ├── scripts/                     Package and rendered-browser checks
 └── tests/                       Interaction-model tests
 ```
@@ -265,7 +308,7 @@ Reproducible interaction issues, stale sources, and documented platform differen
 
 - Documentation changes should identify the applicable platform, primary source, and verification date. Keep official guidance separate from project-authored engineering interpretation; do not submit bulk copies or full translations of Apple documentation.
 - Example changes should describe the user flow, failure behavior, and verification method. Do not include real user data, secrets, Apple fonts, official screenshots, or unlicensed assets.
-- Code changes should run `npm run check` and `npm test`; run `npm run test:browser` when visible behavior changes. State which platforms remain unverified.
+- Code changes should run `npm run check` and `npm test`; run `npm run test:browser` for interaction-lab changes and `npm run test:gallery` for refactor-gallery changes. State which platforms remain unverified.
 - System behavior, measurements, and resource terms can change. Recheck the relevant primary source instead of treating the example's colors, radii, breakpoints, or CSS blur values as Apple requirements.
 
 The current project version is declared in `package.json`. Release tags should point to an actually verified commit. Neither the hero image nor a passing Web check implies compatibility with every agent host or native platform.

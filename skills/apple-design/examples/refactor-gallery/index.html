@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:,">
+  <title>Apple-Design · Web 重构案例</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="gallery-bar">
+    <a class="gallery-brand" href="?case=commerce&view=after" aria-label="Apple-Design 重构案例首页">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Apple-Design Cases</span>
+    </a>
+    <nav class="case-switcher" aria-label="案例场景">
+      <button type="button" data-case-button="commerce" aria-pressed="true">商品展示</button>
+      <button type="button" data-case-button="dashboard" aria-pressed="false">数据仪表盘</button>
+      <button type="button" data-case-button="editor" aria-pressed="false">内容编辑器</button>
+    </nav>
+    <div class="view-switcher" role="group" aria-label="重构版本">
+      <button type="button" data-view-button="before" aria-pressed="false">Before</button>
+      <button type="button" data-view-button="after" aria-pressed="true">After</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="case-intro" aria-labelledby="case-title">
+      <div>
+        <p class="eyebrow" id="case-kicker">CASE 01 · COMMERCE</p>
+        <h1 id="case-title">商品详情与购买</h1>
+        <p id="case-summary">把商品、选择条件、履约信息和购买动作组织成一条连续路径。</p>
+      </div>
+      <p class="comparison-note"><strong>同场景 · 同核心数据</strong><br>只改变信息关系、组件行为与视觉层级。</p>
+    </section>
+
+    <section class="gallery-stage" id="gallery-stage" aria-live="polite">
+      <article class="prototype baseline" data-case="commerce" data-view="before" aria-label="商品展示重构前">
+        <header class="store-header baseline-header">
+          <span class="store-logo">NORTHSTAR</span>
+          <nav aria-label="商店导航"><a href="#">首页</a><a href="#">新品</a><a href="#">分类</a><a href="#">品牌故事</a><a href="#">帮助</a></nav>
+          <button class="icon-button" type="button" aria-label="打开购物袋">袋 <span data-cart-count>0</span></button>
+        </header>
+        <div class="sale-banner">全场包邮 · 14 天退换 · 在线支持</div>
+        <div class="commerce-before-layout">
+          <section class="product-media before-media" aria-label="商品图片">
+            <div class="headphone-art compact" aria-hidden="true"><span></span></div>
+            <div class="thumbnail-row" aria-label="图片缩略图"><button aria-label="查看正面图片"></button><button aria-label="查看侧面图片"></button><button aria-label="查看细节图片"></button></div>
+          </section>
+          <section class="purchase-panel before-purchase" aria-labelledby="before-product-title">
+            <p class="muted small">无线音频 / 新品</p>
+            <h2 id="before-product-title">Arc One 无线耳机</h2>
+            <div class="rating-row"><span aria-label="4.8 分">★★★★★</span><a href="#">326 条评价</a></div>
+            <p class="before-copy">旗舰主动降噪耳机，沉浸式空间音频，最长 30 小时续航。</p>
+            <p class="legacy-price"><strong>¥1,899</strong> <span>或每月 ¥158 起</span></p>
+            <fieldset class="legacy-fieldset">
+              <legend>选择颜色</legend>
+              <label><input type="radio" name="commerce-color" value="silver" checked> 雾银</label>
+              <label><input type="radio" name="commerce-color" value="black"> 午夜黑</label>
+              <label><input type="radio" name="commerce-color" value="blue"> 海湾蓝</label>
+            </fieldset>
+            <div class="legacy-perks"><span>✓ 明日送达</span><span>✓ 免费退换</span><span>✓ 两年保修</span></div>
+            <button class="legacy-cta" type="button" data-action="add-cart">加入购物袋</button>
+            <button class="legacy-secondary" type="button">加入收藏</button>
+          </section>
+        </div>
+      </article>
+
+      <article class="prototype refined" data-case="commerce" data-view="after" aria-label="商品展示重构后">
+        <header class="store-header refined-header chrome-surface">
+          <a class="store-logo refined-logo" href="#">Northstar</a>
+          <nav aria-label="商店导航"><a href="#" aria-current="page">音频</a><a href="#">穿戴设备</a><a href="#">支持</a></nav>
+          <div class="header-actions"><button class="quiet-button" type="button">搜索</button><button class="icon-button" type="button" aria-label="打开购物袋">购物袋 <span class="count" data-cart-count>0</span></button></div>
+        </header>
+        <div class="product-breadcrumb"><a href="#">商店</a><span>/</span><a href="#">音频</a><span>/</span><span>Arc One</span></div>
+        <div class="commerce-after-layout">
+          <section class="product-media after-media" aria-label="商品图片">
+            <span class="product-tag">NEW</span>
+            <div class="headphone-art" aria-hidden="true"><span></span></div>
+            <div class="media-footer"><span>雾银</span><div class="thumbnail-row"><button class="selected" aria-label="查看正面图片"></button><button aria-label="查看侧面图片"></button><button aria-label="查看细节图片"></button></div></div>
+          </section>
+          <section class="purchase-panel after-purchase" aria-labelledby="after-product-title">
+            <p class="eyebrow">ARC SERIES</p>
+            <h2 id="after-product-title">Arc One</h2>
+            <p class="product-lede">沉浸式聆听，保留你需要的安静。</p>
+            <div class="price-row"><strong>¥1,899</strong><span>或每月 ¥158 起</span></div>
+            <div class="rating-row refined-rating"><span aria-label="4.8 分">★★★★★</span><a href="#">4.8 · 326 条评价</a></div>
+            <fieldset class="color-picker">
+              <legend>外观 <strong data-selected-color>雾银</strong></legend>
+              <label><input type="radio" name="commerce-color-after" value="silver" checked data-color="雾银"><span class="swatch silver"></span><span>雾银</span></label>
+              <label><input type="radio" name="commerce-color-after" value="black" data-color="午夜黑"><span class="swatch black"></span><span>午夜黑</span></label>
+              <label><input type="radio" name="commerce-color-after" value="blue" data-color="海湾蓝"><span class="swatch blue"></span><span>海湾蓝</span></label>
+            </fieldset>
+            <dl class="fulfilment-list"><div><dt>送达</dt><dd>明日免费送达</dd></div><div><dt>退换</dt><dd>收到商品后 14 天内</dd></div><div><dt>保障</dt><dd>两年有限保修</dd></div></dl>
+            <button class="primary-action" type="button" data-action="add-cart">加入购物袋</button>
+            <p class="action-hint">购买前不会收取费用。</p>
+          </section>
+        </div>
+      </article>
+
+      <article class="prototype baseline" data-case="dashboard" data-view="before" aria-label="数据仪表盘重构前" hidden>
+        <div class="admin-shell legacy-admin">
+          <aside class="legacy-sidebar"><strong>OPS ADMIN</strong><a class="active" href="#">Dashboard</a><a href="#">Analytics</a><a href="#">Orders</a><a href="#">Customers</a><a href="#">Products</a><a href="#">Settings</a></aside>
+          <section class="legacy-dashboard-content">
+            <header class="legacy-page-header"><div><p class="muted small">DASHBOARD / OVERVIEW</p><h2>Business Dashboard</h2></div><div><select data-range aria-label="数据时间范围"><option value="30">Last 30 days</option><option value="7">Last 7 days</option></select><button type="button">Export</button></div></header>
+            <div class="legacy-kpi-grid"><div><span>Revenue</span><strong>¥284,920</strong><small>+12.4%</small></div><div><span>Orders</span><strong>1,284</strong><small>+8.1%</small></div><div><span>Conversion</span><strong>4.8%</strong><small>+0.6%</small></div><div><span>Issues</span><strong>7</strong><small>2 high priority</small></div></div>
+            <div class="legacy-dashboard-grid"><section class="legacy-card"><header><strong>Revenue overview</strong><button type="button">•••</button></header><div class="bar-chart" aria-label="收入柱状图"><i style="height:38%"></i><i style="height:52%"></i><i style="height:47%"></i><i style="height:68%"></i><i style="height:61%"></i><i style="height:79%"></i><i style="height:88%"></i></div></section><section class="legacy-card"><header><strong>Alerts</strong><a href="#">View all 7</a></header><ul class="legacy-activity"><li><span>Payment failure rate</span><small>High priority</small></li><li><span>Inventory below threshold</span><small>3 products</small></li><li><span>Refund review pending</span><small>4 orders</small></li></ul></section></div>
+          </section>
+        </div>
+      </article>
+
+      <article class="prototype refined" data-case="dashboard" data-view="after" aria-label="数据仪表盘重构后" hidden>
+        <div class="admin-shell refined-admin">
+          <aside class="refined-sidebar chrome-surface"><a class="workspace-logo" href="#"><span class="brand-mark"></span>Northstar Ops</a><nav aria-label="运营导航"><p>分析</p><a class="active" href="#" aria-current="page">运营总览</a><a href="#">收入分析</a><a href="#">客户</a><p>工作</p><a href="#">订单</a><a href="#">商品</a><a href="#">报告</a></nav><button class="account-button" type="button"><span>林</span><span><strong>林乔</strong><small>运营负责人</small></span></button></aside>
+          <section class="dashboard-main">
+            <header class="dashboard-heading"><div><p class="eyebrow">运营总览</p><h2>今天需要关注什么</h2><p>数据更新于 10:32 · 北京时间</p></div><div class="dashboard-actions"><label>时间范围<select data-range><option value="30">近 30 天</option><option value="7">近 7 天</option></select></label><button class="secondary-action" type="button">导出报告</button></div></header>
+            <div class="refined-kpi-grid"><article><span>净收入</span><strong>¥284,920</strong><small>较上期 +12.4%</small></article><article><span>订单</span><strong>1,284</strong><small>较上期 +8.1%</small></article><article><span>转化率</span><strong>4.8%</strong><small>较上期 +0.6%</small></article><article class="attention-kpi"><span>待处理异常</span><strong>7</strong><small>其中 2 项高优先级</small></article></div>
+            <div class="refined-dashboard-grid">
+              <section class="data-panel trend-panel"><header><div><p class="eyebrow">趋势</p><h3>净收入</h3></div><span class="metric-change">↑ 12.4%</span></header><svg class="line-chart" role="img" aria-label="近 30 天净收入稳步上升，中间有两次轻微回落" viewBox="0 0 640 260"><g class="grid-lines"><path d="M36 42H612M36 108H612M36 174H612M36 240H612"/></g><path class="area" d="M36 212C90 202 116 172 166 184S252 148 308 152S394 112 446 124S542 72 612 56V240H36Z"/><path class="line" d="M36 212C90 202 116 172 166 184S252 148 308 152S394 112 446 124S542 72 612 56"/></svg><div class="chart-labels"><span>8/14</span><span>8/21</span><span>8/28</span><span>9/04</span><span>9/12</span></div></section>
+              <section class="data-panel attention-panel"><header><div><p class="eyebrow">需要处理</p><h3>异常队列</h3></div><a href="#">查看全部 7 项</a></header><ul><li><button type="button" data-action="inspect-issue"><span><strong>支付失败率升高</strong><small>过去 30 分钟高于基线 2.1%</small></span><em>高优先级</em></button></li><li><button type="button" data-action="inspect-issue"><span><strong>库存低于安全线</strong><small>Arc One 等 3 个商品</small></span><em>3 个商品</em></button></li><li><button type="button" data-action="inspect-issue"><span><strong>退款等待审核</strong><small>最早提交于 09:12</small></span><em>4 笔</em></button></li></ul></section>
+            </div>
+          </section>
+        </div>
+      </article>
+
+      <article class="prototype baseline" data-case="editor" data-view="before" aria-label="内容编辑器重构前" hidden>
+        <header class="legacy-editor-header"><strong>CONTENT ADMIN</strong><nav><a href="#">Posts</a><a href="#">Media</a><a href="#">Categories</a><a href="#">Settings</a></nav><div><button type="button" data-action="preview">Preview</button><button type="button" data-action="publish">Publish</button></div></header>
+        <div class="legacy-editor-page">
+          <h2>Edit Post</h2><p class="muted">Posts / Spring Product Update / Edit</p>
+          <div class="legacy-editor-grid"><section class="legacy-form-card"><label>Title<input data-sync="title" value="春季产品更新：更清楚地看见下一步"></label><label>Content<textarea data-sync="body">我们重新整理了工作台的信息层级。现在，待处理事项会优先出现在首屏，并明确说明数据更新时间与下一步操作。
+
+本次更新不会改变已有内容或发布规则。</textarea></label><label>Excerpt<textarea>我们重新整理了工作台的信息层级。</textarea></label></section><aside class="legacy-meta-card"><h3>Publish</h3><label>Status<select><option>Draft</option></select></label><label>Visibility<select><option>Public</option></select></label><label>Publish date<input value="Immediately"></label><button type="button">Save draft</button><hr><h3>Category</h3><label><input type="checkbox" checked> Product updates</label><label><input type="checkbox"> Guides</label><label><input type="checkbox"> News</label></aside></div>
+        </div>
+      </article>
+
+      <article class="prototype refined" data-case="editor" data-view="after" aria-label="内容编辑器重构后" hidden>
+        <div class="editor-shell">
+          <aside class="editor-sidebar chrome-surface"><a class="workspace-logo" href="#"><span class="brand-mark"></span>Northstar Studio</a><nav aria-label="内容导航"><p>内容</p><a href="#">所有文章</a><a class="active" href="#" aria-current="page">正在编辑</a><a href="#">定时发布</a><p>资源</p><a href="#">媒体库</a><a href="#">分类与标签</a></nav></aside>
+          <section class="editor-main">
+            <header class="editor-toolbar chrome-surface"><div><p class="editor-path">文章 / 春季产品更新</p><span data-save-status role="status">所有更改已保存 · 10:31</span></div><div><button class="quiet-button" type="button" data-action="preview">预览</button><button class="primary-action compact-action" type="button" data-action="publish">发布…</button></div></header>
+            <div class="editor-workspace"><article class="document-editor"><label class="sr-only" for="refined-title">文章标题</label><input id="refined-title" class="document-title" data-sync="title" value="春季产品更新：更清楚地看见下一步"><div class="format-toolbar" role="toolbar" aria-label="文本格式"><button type="button" aria-label="标题">H2</button><button type="button" aria-label="粗体"><strong>B</strong></button><button type="button" aria-label="插入链接">链接</button><span></span><button type="button">正文</button></div><label class="sr-only" for="refined-body">文章正文</label><textarea id="refined-body" class="document-body" data-sync="body">我们重新整理了工作台的信息层级。现在，待处理事项会优先出现在首屏，并明确说明数据更新时间与下一步操作。
+
+本次更新不会改变已有内容或发布规则。</textarea></article><aside class="publish-inspector" aria-labelledby="publish-settings"><h3 id="publish-settings">发布设置</h3><dl><div><dt>状态</dt><dd>草稿</dd></div><div><dt>作者</dt><dd>周小满</dd></div><div><dt>分类</dt><dd>产品更新</dd></div></dl><button class="inspector-row" type="button"><span><strong>封面图片</strong><small>已选择 1600×900</small></span><span aria-hidden="true">›</span></button><button class="inspector-row" type="button"><span><strong>SEO 与分享</strong><small>描述完整</small></span><span aria-hidden="true">›</span></button><p class="inspector-note">发布前会再次确认可见范围和时间。</p></aside></div>
+          </section>
+        </div>
+      </article>
+    </section>
+    <p class="prototype-status" id="prototype-status" role="status">正在查看商品展示的重构后版本。</p>
+  </main>
+
+  <dialog id="publish-dialog" aria-labelledby="publish-dialog-title">
+    <form method="dialog">
+      <p class="eyebrow">发布确认</p>
+      <h2 id="publish-dialog-title">发布《春季产品更新》？</h2>
+      <p>文章将立即对所有访客可见。此演示不会真的发布内容。</p>
+      <div class="dialog-actions"><button value="cancel">继续编辑</button><button class="primary-action compact-action" value="confirm">确认演示发布</button></div>
+    </form>
+  </dialog>
+
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>

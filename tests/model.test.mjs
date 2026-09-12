@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { titleError, saveTitle } from '../skills/apple-design/examples/interaction-lab/model.mjs'
+import { CASES, normalizeView } from '../skills/apple-design/examples/refactor-gallery/app.mjs'
 
 test('title boundaries reject nontext, whitespace and excessive input', () => {
   for (const invalid of [null, 3, '', '  ', 'a'.repeat(121)]) assert.ok(titleError(invalid))
@@ -14,4 +15,10 @@ test('validation and simulated failure reject without claiming success', async (
   await assert.rejects(saveTitle(' '), /请输入/)
   await assert.rejects(saveTitle('保留草稿', true), /输入已保留/)
   assert.equal(await saveTitle('保留草稿'), '保留草稿')
+})
+
+test('refactor gallery exposes three bounded cases and safe URL defaults', () => {
+  assert.deepEqual(Object.keys(CASES), ['commerce', 'dashboard', 'editor'])
+  assert.deepEqual(normalizeView('?case=dashboard&view=before'), { caseName: 'dashboard', view: 'before' })
+  assert.deepEqual(normalizeView('?case=unknown&view=unknown'), { caseName: 'commerce', view: 'after' })
 })

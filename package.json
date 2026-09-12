@@ -7,7 +7,8 @@
   "scripts": {
     "check": "node scripts/check-package.mjs",
     "test": "node --test tests/model.test.mjs",
-    "test:browser": "node scripts/check-example.mjs"
+    "test:browser": "node scripts/check-example.mjs",
+    "test:gallery": "node scripts/check-gallery.mjs"
   },
   "devDependencies": { "playwright-core": "1.62.1" }
 }
