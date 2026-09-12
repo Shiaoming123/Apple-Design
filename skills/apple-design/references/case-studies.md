@@ -46,29 +46,37 @@
 
 重新打开在线体验并检查当前布局；若要引用具体行为，应再读对应代码。对浅色渐变、透明材质、细边框和密集顶部导航检查对比度、200% 文字、键盘焦点、减少透明度及较窄桌面窗口。不要把项目自述的“Apple 风格”写成 HIG 合规或 Apple 认证。
 
-## Web 重构画廊：三类页面基线
+## Web 重构画廊：六类页面与组件
 
 - 可运行示例：[Web 重构案例画廊](../examples/refactor-gallery/README.md)
-- 场景：商品详情与购买、运营仪表盘、内容编辑器。
+- 场景：商品详情与购买、运营仪表盘、内容编辑器、手机日程规划器、卡片、数据图表。
 - 原型来源：[Spree Storefront](https://github.com/spree/storefront)、[shadcn/ui `dashboard-01`](https://ui.shadcn.com/blocks)、[Puck](https://github.com/puckeditor/puck)。三者核验时均以 MIT 许可发布。
 - 核验日期：2026-09-12（Asia/Shanghai）
 
 ### 证据
 
-以下六张图片由同一个本地 HTML/CSS/JavaScript 示例在 1440×1000 CSS px、浅色模式、Windows Edge Chromium 153.0.4234.32 中生成。每张图片截取同尺寸页面原型区域；前后使用相同核心数据。
+以下十二张图片由同一个本地 HTML/CSS/JavaScript 示例在浅色浏览器模式、Windows Edge Chromium 153.0.4234.32 中生成。浏览器视口为 1440×1000 CSS px，手机设备框按其内容截取。每组前后保持相同数据、宽度及归一化后的最小高度，截图时仅隐藏画廊导航避免遮挡原型。卡片 After 的深色是案例自身的视觉设计，不是切换浏览器主题。
 
-| 场景 | Before SHA-256 | After SHA-256 |
-| --- | --- | --- |
-| [商品详情](../assets/case-studies/refactor-gallery/commerce/before.png) | `c1cba1cba55cbe66de58a060b1827d10e6d4ca81cb9122b3f79a3539c44abba8` | [`d8714409ee9ff2ed81a715fffe530feb625d23770c7f0ecfebdd4eb4880f0509`](../assets/case-studies/refactor-gallery/commerce/after.png) |
-| [数据仪表盘](../assets/case-studies/refactor-gallery/dashboard/before.png) | `07001e3f35ac168599ce9e576e7b601c487e11a6411ff419aff5a16fe65c8f7c` | [`f35e146c932333ef23ae82fc266c8fb20f2dd3347c22bb6acff9d8c7abd532fd`](../assets/case-studies/refactor-gallery/dashboard/after.png) |
-| [内容编辑器](../assets/case-studies/refactor-gallery/editor/before.png) | `249fcef03d3186d046d10714b3b8fd4d3487c5d732d8a661586da800b84fffd5` | [`2565faabc17dfe4667eca018618a33bf916553859e633c30581a0a90ffc7e70c`](../assets/case-studies/refactor-gallery/editor/after.png) |
+| 场景 | 尺寸（每张） | Before SHA-256 | After SHA-256 |
+| --- | --- | --- | --- |
+| [商品详情](../assets/case-studies/refactor-gallery/commerce/before.png) | 1280×941 | `9c7122fb3c6563598460324811dacffee57b8e7078f3f084ad651309c50938eb` | [`06c4dbaeded21de607c5e71752cb94b9c99b06a2854d6b751a9c180a9cb3147b`](../assets/case-studies/refactor-gallery/commerce/after.png) |
+| [数据仪表盘](../assets/case-studies/refactor-gallery/dashboard/before.png) | 1280×849 | `c8e512c3ef23f48056b52ce273e5fd9dba6d9218cddfd8fd9b2b8e8cf375d3ba` | [`a19edb9ce55960d2f30effbc32dd2edb7d409702c4ee6836cd0923759cc56d41`](../assets/case-studies/refactor-gallery/dashboard/after.png) |
+| [内容编辑器](../assets/case-studies/refactor-gallery/editor/before.png) | 1280×805 | `6c2653584a6799a08f89ea6f99d899f2d2ba12ef1974296db4852454cdc74968` | [`27f55bef81a67538388bc8c9e56b760ec0fe74df66802bf4ed7c9b3721de2a81`](../assets/case-studies/refactor-gallery/editor/after.png) |
+| [手机日程规划器](../assets/case-studies/refactor-gallery/mobile/before.png) | 390×845 | `f278092d08a8a5da4cbfcb6acadca2e6d4d9f0d56da60f92e67f21e15a5fdbf1` | [`3fef452eecd3408bbc58b48ebfcaa610a6448c6ff57a588d70426cb6bb1803c5`](../assets/case-studies/refactor-gallery/mobile/after.png) |
+| [卡片](../assets/case-studies/refactor-gallery/cards/before.png) | 1280×1073 | `df1afa6c5944df08f2ac7c61c4bec05d15cf2196f55c015959bf5572704350c0` | [`3e94b1e5bda6c98bca04383271de179d70452a87ea79d18ccb5a8d433247a296`](../assets/case-studies/refactor-gallery/cards/after.png) |
+| [数据图表](../assets/case-studies/refactor-gallery/charts/before.png) | 1280×1094 | `517accc62d8ba5008bd8e95abdb834919aacbfd8b192804db573d562e404e85e` | [`580ba6095667b21c537dcd76d39b910d3b33c9872cdf0173409e11df6bac39a4`](../assets/case-studies/refactor-gallery/charts/after.png) |
 
 ### 重构关系
+
+- 卡片与图表为项目原创的组件用法比较，详见 [取舍与数据合同](component-comparisons.md)。本轮按字体、材质、排版、交互和视觉风格做完整重设计，保持核心任务与数据。
 
 - 商品详情：从促销和通用导航抢占注意力，改为“商品 → 价格 → 规格 → 履约 → 加入购物袋”的连续购买路径。
 - 数据仪表盘：从同权重指标与图表堆叠，改为带更新时间、比较口径、异常优先级和下钻入口的运营决策页。
 - 内容编辑器：从字段表单与发布侧栏，改为持续可见的文档上下文、保存状态、编辑画布和发布边界。
+- 手机日程规划器：从居中的通用表单弹窗，改为保持日程上下文的底部任务面板，并提供明确的专注态进入与退出路径。
 
 ### 来源与边界
 
-开源原型用于选择真实任务结构，未把上游应用、商标、图片或在线数据复制进本 Skill。Before 是项目制作的本地适配基线，不是第三方页面原样截图；After 是应用本 Skill 规则后的实际 Web 实现，也不是 Apple 官方设计或原生平台验证。自动检查覆盖 URL 状态、规格选择、购物袋反馈、时间筛选、异常选择、自动保存、发布对话框、焦点恢复、390 px 窄屏、200% CSS 文字以及浏览器控制台错误；未覆盖真实支付、生产数据、持久化、读屏器、Safari、原生壳或设备。
+开源原型用于选择真实桌面任务结构，手机任务流由项目自制；未把上游应用、商标、图片或在线数据复制进本 Skill。Before 是项目制作的本地适配基线，不是第三方页面原样截图；After 是应用本 Skill 规则后的实际 Web 实现，也不是 Apple 官方设计或原生平台验证。自动检查覆盖 URL 状态、规格选择、购物袋反馈、时间筛选、异常选择、自动保存、发布对话框、手机弹层焦点恢复、专注态进入/暂停/退出、390 px 窄屏、200% CSS 文字以及浏览器控制台错误；未覆盖真实支付、生产数据、持久化、读屏器、Safari、原生壳或设备。
+
+[六组真实浏览器重设计录屏](../assets/case-studies/refactor-gallery/redesign-motion.mp4) 展示版本切换、商品换色、异常详情、专注编辑、手机任务流、卡片展开和图表键盘可操作的选中状态。视频来自实际页面，没有生成概念帧。

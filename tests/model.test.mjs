@@ -17,8 +17,9 @@ test('validation and simulated failure reject without claiming success', async (
   assert.equal(await saveTitle('保留草稿'), '保留草稿')
 })
 
-test('refactor gallery exposes three bounded cases and safe URL defaults', () => {
-  assert.deepEqual(Object.keys(CASES), ['commerce', 'dashboard', 'editor'])
+test('refactor gallery exposes six bounded cases and safe URL defaults', () => {
+  assert.deepEqual(Object.keys(CASES).sort(), ['cards', 'charts', 'commerce', 'dashboard', 'editor', 'mobile'])
   assert.deepEqual(normalizeView('?case=dashboard&view=before'), { caseName: 'dashboard', view: 'before' })
+  assert.deepEqual(normalizeView('?case=mobile&view=after'), { caseName: 'mobile', view: 'after' })
   assert.deepEqual(normalizeView('?case=unknown&view=unknown'), { caseName: 'commerce', view: 'after' })
 })

@@ -8,7 +8,7 @@
 
 把设计原则变成可执行的页面、组件与交互。
 
-[**开始使用**](#安装到-codex) · [浏览参考](#完整参考目录) · [运行交互实验](#运行交互示例)
+[**开始使用**](#跨-agent-使用) · [浏览参考](#完整参考目录) · [运行交互实验](#运行交互示例)
 
 [English](README.md) · **简体中文**
 
@@ -57,42 +57,48 @@
 
 采用渐进阅读：入口保持简短，按任务加载参考。它不是 Apple 官方文档翻译包，也不是像素尺寸大全。
 
-## 安装到 Codex
+## 跨 Agent 使用
 
-先克隆仓库，或在 GitHub 使用 **Code → Download ZIP** 并解压：
+完整的 `skills/apple-design/` 遵循 [Agent Skills 开放格式](https://agentskills.io/specification)：以带 YAML 元信息的 `SKILL.md` 为入口，引用相对路径下的参考、资产和案例。核心指令不依赖 Codex API、工具名称、账户或其它 Skill。
 
-```sh
-git clone https://github.com/Shiaoming123/Apple-Design.git
-cd Apple-Design
-```
-
-将完整的 `skills/apple-design` 文件夹复制到用户的 Skills 目录。不要只复制 `SKILL.md`：它依赖相邻的参考和示例。保留文件夹内的 LICENSE 和 PROVENANCE.md。若已有同名 Skill，先备份并比较，不直接覆盖未知修改。
-
-Windows PowerShell 可在仓库根目录执行以下安装命令；目标已存在时会停止，不覆盖：
-
-```powershell
-$skillRoot = if ($env:CODEX_HOME) {
-  Join-Path $env:CODEX_HOME 'skills'
-} else {
-  Join-Path ([Environment]::GetFolderPath('UserProfile')) '.codex/skills'
-}
-$skillTarget = Join-Path $skillRoot 'apple-design'
-if (Test-Path -LiteralPath $skillTarget) { throw '同名 Skill 已存在，请先备份并比较。' }
-New-Item -ItemType Directory -Path $skillRoot -Force | Out-Null
-Copy-Item -LiteralPath './skills/apple-design' -Destination $skillTarget -Recurse
-```
-
-默认目录通常为 `~/.codex/skills/apple-design`；若配置了 CODEX_HOME，则使用其 skills 子目录。重新载入会话后可使用：
+克隆或下载仓库后，任何能读取文件的 agent 都可以直接使用当前版本：
 
 ```text
-使用 $apple-design 为现有任务产品设计“今天”页面。
-保留品牌与信息架构，输出主流程、错误恢复、组件契约、
-宽窄窗口差异与验收步骤；不增加未经请求的功能。
+读取 skills/apple-design/SKILL.md，按其中指导完成当前任务。
+按各 Markdown 文件的位置解析相对引用，保留已有产品约束，
+使用相同数据对比方案，并报告实际改动及验证结果。
 ```
 
-本地既有调用名仍是 `$apple-design`。其他 Agent 的 Skills 目录与加载方式以该工具配置为准，不宣称全部宿主均已测试。
+支持自动发现 Skills 的宿主：将整个 `skills/apple-design` 目录放入该宿主配置的 Skills 目录，保留名称、许可证与相对资源，再按宿主规则重新加载。没有自动发现能力时，直接使用上面的文件读取指令。`$apple-design` 是 Codex 的调用写法，不是其它 agent 的必要条件。
 
-## 三种典型用法
+也可以用可选的 [Skills CLI](https://www.skills.sh/docs/cli) 安装**远程已发布版本**，按其提示选择 Claude Code、Cursor、Codex、GitHub Copilot 等支持的宿主：
+
+```sh
+npx skills add Shiaoming123/Apple-Design
+```
+
+本地尚未发布的版本请直接读取当前检出目录。手动使用无需 Node.js 或 Python；CLI 自身需要 Node.js。纯文本 agent 需要同时提供入口与任务相关的参考文件；没有浏览器时可完成设计或代码审查，但应说明哪些视觉与交互验证未运行。
+
+`agents/openai.yaml` 只提供可选宿主展示元数据，其它 agent 可以忽略或省略。本仓库验证独立复制后的资源完整性和去掉该元数据后的可用性，不宣称已经逐一运行所有厂商的 agent。
+
+## 卡片与图表对比
+
+[![六组设计重构前后及实际交互的动态预览](skills/apple-design/assets/case-studies/refactor-gallery/redesign-motion-preview.gif)](skills/apple-design/assets/case-studies/refactor-gallery/redesign-motion.mp4)
+
+21 秒真实浏览器录屏。GIF 展示全部六组案例，点击可打开带播放控制的完整分辨率 MP4；静态对比见下文链接。
+
+六组 After 已按字体、材质、排版、交互与视觉风格重新设计。可查看 [真实浏览器录屏](skills/apple-design/assets/case-studies/refactor-gallery/redesign-motion.mp4) 和 [完整重设计合同](skills/apple-design/references/component-comparisons.md)。
+
+新增两组英文组件案例，连同既有页面共六组、十二张截图。[完整画廊](README.md#web-refactor-gallery) 和 [取舍说明](skills/apple-design/references/component-comparisons.md) 可直接查阅。
+
+| 场景 | Before | After | 选择依据 |
+| --- | --- | --- | --- |
+| 卡片 | 奶油色目录、衬线标题、等权卡片 | 石墨色工作区、缎面材质、主次卡片 | 字体、材质、布局、展开反馈同步重做 |
+| 数据图表 | 传统报表、边框表格、环形图 | 编辑式数据画布、大数值、交互条形图 | 类型、排版、配色与键盘探索共同改进 |
+
+两组均保持相同数据，提供可操作控件与适用范围。卡片可展开详情和切换表面；图表可切换收入、订单，并保留精确数据表。可用 `npm run test:gallery` 重建截图，用 `npm run test:portable` 检查去除可选宿主元数据后的独立资源。
+
+## 典型用法
 
 给 Agent 提供现有页面、代码或截图，并说明目标平台、用户任务和不可改动的约束。以下请求可以直接改写使用。
 
@@ -199,7 +205,7 @@ Apple-Design/
 ├── assets/                     宣传图与生成提示词
 ├── skills/apple-design/
 │   ├── SKILL.md                Agent 入口
-│   ├── agents/openai.yaml      Codex 展示元数据
+│   ├── agents/openai.yaml      可选宿主展示元数据
 │   ├── LICENSE / PROVENANCE.md  随 Skill 分发的许可与来源
 │   ├── references/             14 份按需读取的参考
 │   └── examples/interaction-lab/  无运行依赖的交互示例

@@ -18,13 +18,13 @@ Turn design principles into executable pages, components, and interactions.
   <img src="assets/apple-design-hero.png" width="1200" alt="Apple-Design project overview showing page flows, component contracts, platform mapping, accessibility, and evidence-led review">
 </p>
 
-<p align="center"><sub>15 focused guides · Page flows · Component contracts · Cross-platform mapping · Evidence-led review</sub></p>
+<p align="center"><sub>16 focused guides · Page flows · Component contracts · Cross-platform mapping · Evidence-led review</sub></p>
 
 ---
 
 Apple-Design is an independent design-practice Skill informed by the [Apple Human Interface Guidelines][apple-hig]. It gives AI coding agents a practical route from product intent to page architecture, interaction states, component contracts, cross-platform decisions, implementation, and verification.
 
-The repository contains a concise Skill entry point, 15 progressively disclosed reference guides, a runnable interaction lab, and three reproducible Web refactor cases. It is intended for product designers, independent developers, and AI-assisted teams working on new flows or improving existing interfaces.
+The repository contains a concise Skill entry point, 16 progressively disclosed reference guides, a runnable interaction lab, and six reproducible comparisons. It is intended for product designers, independent developers, and AI-assisted teams working on new flows or improving existing interfaces.
 
 > [!IMPORTANT]
 > Apple-Design is not affiliated with, endorsed by, sponsored by, or approved by Apple Inc. The hero image is AI-generated concept art, not a shipped product screenshot. Apple and its product names are trademarks of their respective owners.
@@ -89,27 +89,37 @@ cd Apple-Design
 
 You can also use **Code → Download ZIP** on GitHub and extract the archive.
 
-### 2. Install the Skill in Codex
+### 2. Use it with your agent
 
-Copy the complete `skills/apple-design` directory into your Codex Skills directory. Do not copy `SKILL.md` alone; it relies on the adjacent references and example. Keep the bundled `LICENSE` and `PROVENANCE.md` files.
+The complete `skills/apple-design/` folder follows the [Agent Skills specification](https://agentskills.io/specification): YAML metadata and Markdown instructions in `SKILL.md`, plus relative references, assets, and runnable examples. It has no required Codex API, tool name, account, or companion Skill.
 
-The following PowerShell command installs from the repository root and fails safely if a Skill with the same name already exists:
+**Use the current checkout with any file-reading agent:**
 
-```powershell
-$skillRoot = if ($env:CODEX_HOME) {
-  Join-Path $env:CODEX_HOME 'skills'
-} else {
-  Join-Path ([Environment]::GetFolderPath('UserProfile')) '.codex/skills'
-}
-$skillTarget = Join-Path $skillRoot 'apple-design'
-if (Test-Path -LiteralPath $skillTarget) {
-  throw 'An apple-design Skill already exists. Back it up and compare before replacing it.'
-}
-New-Item -ItemType Directory -Path $skillRoot -Force | Out-Null
-Copy-Item -LiteralPath './skills/apple-design' -Destination $skillTarget -Recurse
+```text
+Read skills/apple-design/SKILL.md and apply it to this task.
+Resolve linked references relative to their Markdown files.
+Review the existing page, preserve its product constraints, and compare
+alternatives using the same data. Report the changes and actual validation.
 ```
 
-The usual destination is `~/.codex/skills/apple-design`; when `CODEX_HOME` is configured, use its `skills` subdirectory. Reload the session, then invoke `$apple-design` explicitly or let Codex select it when the task matches its description.
+**Automatic discovery:** copy the entire `skills/apple-design` directory into the Skills directory configured by your agent, preserving the folder name, license, and relative resources. Reload the agent's skill index if required. Use the host's own invocation syntax; `$apple-design` is a Codex convenience, not part of the portable contract.
+
+For supported hosts such as Claude Code, Cursor, Codex, and GitHub Copilot, the optional [Skills CLI](https://www.skills.sh/docs/cli) can install the **published repository version** and configure the selected host:
+
+```sh
+npx skills add Shiaoming123/Apple-Design
+```
+
+For local unpublished changes, use the checkout directly as above. Manual loading requires no Node.js or Python. The optional CLI needs its own Node.js runtime.
+
+| Host capability | How to use this package |
+| --- | --- |
+| Agent Skills discovery | Install the complete folder in the host-configured Skills directory |
+| File access but no Skills discovery | Explicitly read `skills/apple-design/SKILL.md` |
+| Text-only agent | Supply the entry point and the task-relevant referenced files |
+| No browser / target runtime | Perform supported review work and identify visual or interaction checks not run |
+
+`agents/openai.yaml` is optional UI metadata. Other agents can ignore or omit it; core instructions never depend on it. Package relocation and operation without that metadata are checked locally. This is format portability, not a claim that every agent vendor has been tested.
 
 ### 3. Start with a bounded request
 
@@ -120,7 +130,7 @@ empty/loading/error and recovery states, component contracts, narrow and wide
 window behavior, keyboard access, and verification steps. Do not add features.
 ```
 
-Other agent hosts may use different Skill locations or discovery rules. Only the Codex layout above is documented here.
+Use the same task prompt with your host's invocation syntax, or explicitly name the SKILL.md file.
 
 ## Use cases
 
@@ -178,9 +188,17 @@ Tokens Counter demonstrates a stable “select → configure and input → compa
 
 ### Web refactor gallery
 
-Three runnable comparisons cover commerce, analytics, and content editing. Each pair uses the same core data at the same viewport; the After version changes information hierarchy, component behavior, feedback, and responsive rules—not the product task.
+[![Animated walkthrough of six before-and-after designs and their interactions](skills/apple-design/assets/case-studies/refactor-gallery/redesign-motion-preview.gif)](skills/apple-design/assets/case-studies/refactor-gallery/redesign-motion.mp4)
 
-The task archetypes were selected from permissively licensed open-source projects: [Spree Storefront](https://github.com/spree/storefront), [shadcn/ui `dashboard-01`](https://ui.shadcn.com/blocks), and [Puck](https://github.com/puckeditor/puck). To keep the Skill small and redistributable, the gallery uses project-authored HTML/CSS/JavaScript, fictional data, and CSS artwork rather than vendoring those applications or their brands and media. See the [source research](research/prototype-sources.md), [runnable gallery](skills/apple-design/examples/refactor-gallery/README.md), and [evidence boundary](skills/apple-design/references/case-studies.md).
+21-second real browser recording. The GIF previews all six cases; click it for the full-resolution MP4 with playback controls. Static comparisons follow below.
+
+[Watch the real browser walkthrough](skills/apple-design/assets/case-studies/refactor-gallery/redesign-motion.mp4) · [Read the five-axis redesign contract](skills/apple-design/references/component-comparisons.md)
+
+The six After designs now have distinct visual directions: silver product presentation, a quiet operations workspace, a warm paper editor, a lavender mobile planner, graphite project cards, and a green editorial data canvas. Each changes typography, material, composition, and interaction while retaining the core task.
+
+Six runnable comparisons cover commerce, analytics, content editing, a mobile daily planner, cards, and data charts. Each pair uses the same core data and task; the After version changes information hierarchy, material treatment, motion, component behavior, feedback, and responsive rules—not the product goal.
+
+The desktop task archetypes were selected from permissively licensed open-source projects: [Spree Storefront](https://github.com/spree/storefront), [shadcn/ui `dashboard-01`](https://ui.shadcn.com/blocks), and [Puck](https://github.com/puckeditor/puck). The mobile planner is a project-authored task flow. To keep the Skill small and redistributable, the gallery uses project-authored HTML/CSS/JavaScript, fictional data, and CSS artwork rather than vendoring those applications or their brands and media. See the [source research](research/prototype-sources.md), [runnable gallery](skills/apple-design/examples/refactor-gallery/README.md), and [evidence boundary](skills/apple-design/references/case-studies.md).
 
 #### Product detail and purchase
 
@@ -212,7 +230,43 @@ The task archetypes were selected from permissively licensed open-source project
   </tr>
 </table>
 
-These are verified desktop Web implementations, not Apple UI replicas, official endorsements, native-platform evidence, or before/after screenshots of the upstream products.
+#### Mobile daily planner
+
+<table>
+  <tr><th width="50%">Before · modal task form</th><th width="50%">After · focused task sheet</th></tr>
+  <tr>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/mobile/before.png" alt="Mobile planner baseline with a task form modal over a daily schedule"></td>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/mobile/after.png" alt="Refactored mobile planner with layered material, a focused task sheet, and a start-focus action"></td>
+  </tr>
+</table>
+
+#### Card components
+
+A cream catalog becomes a graphite workspace: serif to sans-serif typography, satin or matte materials, featured/supporting cards, progress, and contextual disclosure.
+
+<table>
+  <tr><th width="50%">Before · cream catalog</th><th width="50%">After · graphite workspace</th></tr>
+  <tr>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/cards/before.png" alt="Card components before, including strengths and trade-offs"></td>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/cards/after.png" alt="Card components after, including strengths and trade-offs"></td>
+  </tr>
+</table>
+
+#### Data chart components
+
+A conventional report becomes an editorial data canvas: new typography, surface hierarchy, green chart language, and keyboard-operable channel inspection. Revenue / Orders and the exact data table stay synchronized.
+
+<table>
+  <tr><th width="50%">Before · report panel</th><th width="50%">After · interactive data canvas</th></tr>
+  <tr>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/charts/before.png" alt="Data chart components before, including strengths and trade-offs"></td>
+    <td><img src="skills/apple-design/assets/case-studies/refactor-gallery/charts/after.png" alt="Data chart components after, including strengths and trade-offs"></td>
+  </tr>
+</table>
+
+Read the [comparison trade-offs](skills/apple-design/references/component-comparisons.md). These are complete authored redesigns across typography, material, composition, interaction, and identity. Core data and tasks are preserved.
+
+These are verified browser implementations, not Apple UI replicas, official endorsements, native-platform evidence, or before/after screenshots of the upstream products.
 
 ## Reference library
 
@@ -250,7 +304,7 @@ Open <http://127.0.0.1:18542> and follow the [interaction-lab walkthrough](skill
 
 All tasks are fictional and state exists only in memory. Refreshing resets the example. It does not implement production persistence, authorization, synchronization, or concurrent-edit conflict handling.
 
-The [Web refactor gallery](skills/apple-design/examples/refactor-gallery/README.md) is a second dependency-free example. Run it on port `18543`, or regenerate and verify all six comparison screenshots with `npm run test:gallery`.
+The [Web refactor gallery](skills/apple-design/examples/refactor-gallery/README.md) is a second dependency-free example. Run it on port `18543`, or regenerate and verify all twelve comparison screenshots with `npm run test:gallery`.
 
 ## Validation
 
@@ -275,8 +329,9 @@ Verified locally on 2026-09-12:
 | --- | --- |
 | Package integrity | Local links, license notices, personal-path rules, asset boundary, and Skill entry passed; this is not a full security audit |
 | Model tests | 4 passed: interaction-lab title/save/failure behavior plus gallery route normalization |
+| Portability | Relocated package checked without optional host metadata; run `npm run test:portable` |
 | Browser interaction | Passed on Windows with Edge Chromium 153.0.4234.32; covered validation, draft preservation, unsaved-close protection, and focus restoration |
-| Refactor gallery | Passed on Windows with Edge Chromium 153.0.4234.32; generated 6 screenshots and covered selection, cart feedback, date range, issue selection, autosave, publish confirmation, and focus restoration |
+| Refactor gallery | Passed on Windows with Edge Chromium 153.0.4234.32; generated 12 screenshots and covered selection, cart feedback, date range, issue selection, autosave, publish confirmation, focus restoration, card disclosures, material switching, and synchronized chart metrics |
 | Layout and display | Passed at 1440, 390, and 320 CSS-pixel widths, with long text, 200% CSS text, dark opaque mode, and forced colors |
 | Runtime errors | 0 page errors and 0 console errors in both browser checks |
 | Not verified | Safari, Firefox, manual screen-reader use, native shells, simulators, or physical devices; no accessibility certification is claimed |
@@ -293,10 +348,10 @@ Apple-Design/
 ├── assets/                      Hero artwork and generation prompts
 ├── skills/apple-design/
 │   ├── SKILL.md                 Agent entry point and reference router
-│   ├── agents/openai.yaml       Codex-facing metadata
+│   ├── agents/openai.yaml       Optional host UI metadata
 │   ├── LICENSE / PROVENANCE.md  Redistributed license and source history
-│   ├── references/              15 task-specific guides
-│   └── examples/                 Interaction lab and three-case refactor gallery
+│   ├── references/              16 task-specific guides
+│   └── examples/                 Interaction lab and six-case comparison gallery
 ├── research/                     Open-source prototype selection record
 ├── scripts/                     Package and rendered-browser checks
 └── tests/                       Interaction-model tests
