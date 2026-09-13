@@ -30,7 +30,7 @@ for (const file of files) {
   }
 }
 const skill = await readFile(resolve(root, 'skills/apple-design/SKILL.md'), 'utf8')
-assert.match(skill, /^---\r?\nname: apple-design\r?\ndescription: .+/)
+assert.match(skill, /^---\r?\nname: apple-design\r?\ndescription: .+\r?\nlicense: MIT\r?\n---/)
 for (const path of ['LICENSE', 'skills/apple-design/LICENSE']) {
   const text = await readFile(resolve(root, path), 'utf8')
   assert.ok(text.includes('Copyright (c) 2026 Sudewa'))

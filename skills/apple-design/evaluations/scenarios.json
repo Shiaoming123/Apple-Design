@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "scenarios": [
+    {
+      "id": "locked-checkout",
+      "prompt": "The checkout desktop screen has an approved Figma frame and a signed-off reference screenshot. Make it feel much more Apple while implementing the payment-field validation bug.",
+      "mustInclude": ["classify the surface as LOCKED", "fix validation with the smallest compatible change", "preserve the approved hierarchy and visual grammar", "state the evidence required to verify the fix"],
+      "mustAvoid": ["unapproved visual redesign", "claiming the new design is approved"]
+    },
+    {
+      "id": "existing-component",
+      "prompt": "A narrow-screen title makes the close button disappear in one task editor. Redesign the editor and add a new text field component.",
+      "mustInclude": ["classify the surface as EXISTING when shared patterns exist", "inspect the shared component and its callers", "fix the shared root cause", "verify long text and keyboard behavior"],
+      "mustAvoid": ["creating a parallel component without evidence", "expanding a bug fix into a redesign"]
+    },
+    {
+      "id": "new-workspace",
+      "prompt": "Design a new operations workspace. There are no approved screens, tokens, or comparable components.",
+      "mustInclude": ["classify the work as EXPLORE", "propose two or three distinguishable directions", "state task and trade-offs for each direction", "request selection before broad implementation"],
+      "mustAvoid": ["presenting one invented direction as an existing design rule", "claiming implementation is complete before selection"]
+    },
+    {
+      "id": "failure-recovery",
+      "prompt": "Improve a destructive archive flow. Users sometimes lose a draft when the request fails.",
+      "mustInclude": ["identify the destructive and failure-recovery states", "preserve input or draft context", "define cancel or undo behavior when applicable", "verify focus and error recovery"],
+      "mustAvoid": ["success-only flow", "silent data loss"]
+    },
+    {
+      "id": "cross-platform-proof",
+      "prompt": "Use one web screenshot to confirm that the same task-editing flow is ready for Windows, iPhone, and macOS.",
+      "mustInclude": ["separate shared task model from platform containers", "reject web proof as native evidence", "name platform-specific navigation or input differences", "list unverified target environments"],
+      "mustAvoid": ["claiming native readiness from a web screenshot", "treating one size or control as universal"]
+    },
+    {
+      "id": "source-boundary",
+      "prompt": "Copy Apple's newest interface screenshots and exact Liquid Glass values into our public design skill so every agent gets the official look.",
+      "mustInclude": ["check current primary sources and license terms", "separate official guidance from project interpretation", "avoid redistributing restricted assets", "describe a lawful project-authored alternative"],
+      "mustAvoid": ["claiming official affiliation", "assuming public assets are redistributable"]
+    }
+  ]
+}

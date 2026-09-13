@@ -18,7 +18,7 @@ Turn design principles into executable pages, components, and interactions.
   <img src="assets/apple-design-hero.png" width="1200" alt="Apple-Design project overview showing page flows, component contracts, platform mapping, accessibility, and evidence-led review">
 </p>
 
-<p align="center"><sub>16 focused guides · Page flows · Component contracts · Cross-platform mapping · Evidence-led review</sub></p>
+<p align="center"><sub>18 focused guides · Design-state governance · Component contracts · Cross-platform mapping · Evidence-led review</sub></p>
 
 ---
 
@@ -283,12 +283,16 @@ These are verified browser implementations, not Apple UI replicas, official endo
 | Adaptation | [Cross-platform playbook](skills/apple-design/references/cross-platform-playbook.md) | Shared boundaries, layout changes, and native conventions |
 | Implementation | [Code implementation and acceptance](skills/apple-design/references/code-implementation.md) | Vue, React, HTML, semantic tokens, and product refinement |
 | Delivery | [Design delivery](skills/apple-design/references/design-delivery.md) | Prompt patterns, review records, and verification reports |
+| Governance | [Design-state governance](skills/apple-design/references/design-governance.md) | Protect approved designs, reuse existing systems, and bound exploration |
+| Output | [Delivery contract](skills/apple-design/references/output-contract.md) | A concise, reviewable record for multi-surface work |
 | Design tooling | [Figma workflow](skills/apple-design/references/figma-workflow.md) | Design-file organization and developer handoff |
 | Cases | [Documented product cases](skills/apple-design/references/case-studies.md) | Reusable information relationships with evidence and platform boundaries |
 | Marketing | [Marketing-page boundary](skills/apple-design/references/marketing-pages.md) | Explicit marketing-page work, not application workspace design |
 | Maintenance | [Sources and coverage](skills/apple-design/references/sources.md) | Official entry points, research limits, and update practice |
 
 The guides are currently written in Simplified Chinese. Technical identifiers, commands, filenames, platform names, and interface semantics remain unchanged.
+
+The [v0.2 development plan](ROADMAP.md) tracks the shipped anti-drift contract and evaluation kit, plus the deliberately deferred English entry, Figma expansion, native evidence, and contributor automation work.
 
 ## Interaction lab
 
@@ -314,6 +318,8 @@ Installing the Skill requires neither Node.js nor Python. Repository checks requ
 npm ci
 npm run check
 npm test
+npm run test:portable
+npm run test:evaluations
 
 # Optional rendered interaction check; no browser is downloaded.
 $env:BROWSER_EXECUTABLE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
@@ -330,6 +336,7 @@ Verified locally on 2026-09-12:
 | Package integrity | Local links, license notices, personal-path rules, asset boundary, and Skill entry passed; this is not a full security audit |
 | Model tests | 4 passed: interaction-lab title/save/failure behavior plus gallery route normalization |
 | Portability | Relocated package checked without optional host metadata; run `npm run test:portable` |
+| Behavior evaluation kit | Six rubric-backed scenarios cover locked designs, existing systems, exploration, failure recovery, platform proof, and source boundaries; `npm run test:evaluations` validates the kit rather than grading another model |
 | Browser interaction | Passed on Windows with Edge Chromium 153.0.4234.32; covered validation, draft preservation, unsaved-close protection, and focus restoration |
 | Refactor gallery | Passed on Windows with Edge Chromium 153.0.4234.32; generated 12 screenshots and covered selection, cart feedback, date range, issue selection, autosave, publish confirmation, focus restoration, card disclosures, material switching, and synchronized chart metrics |
 | Layout and display | Passed at 1440, 390, and 320 CSS-pixel widths, with long text, 200% CSS text, dark opaque mode, and forced colors |
@@ -350,7 +357,8 @@ Apple-Design/
 │   ├── SKILL.md                 Agent entry point and reference router
 │   ├── agents/openai.yaml       Optional host UI metadata
 │   ├── LICENSE / PROVENANCE.md  Redistributed license and source history
-│   ├── references/              16 task-specific guides
+│   ├── references/              18 task-specific guides
+│   ├── evaluations/             Six maintainable agent-behavior scenarios
 │   └── examples/                 Interaction lab and six-case comparison gallery
 ├── research/                     Open-source prototype selection record
 ├── scripts/                     Package and rendered-browser checks
@@ -363,7 +371,7 @@ Reproducible interaction issues, stale sources, and documented platform differen
 
 - Documentation changes should identify the applicable platform, primary source, and verification date. Keep official guidance separate from project-authored engineering interpretation; do not submit bulk copies or full translations of Apple documentation.
 - Example changes should describe the user flow, failure behavior, and verification method. Do not include real user data, secrets, Apple fonts, official screenshots, or unlicensed assets.
-- Code changes should run `npm run check` and `npm test`; run `npm run test:browser` for interaction-lab changes and `npm run test:gallery` for refactor-gallery changes. State which platforms remain unverified.
+- Code changes should run `npm run check`, `npm test`, `npm run test:portable`, and `npm run test:evaluations`; run `npm run test:browser` for interaction-lab changes and `npm run test:gallery` for refactor-gallery changes. State which platforms remain unverified.
 - System behavior, measurements, and resource terms can change. Recheck the relevant primary source instead of treating the example's colors, radii, breakpoints, or CSS blur values as Apple requirements.
 
 The current project version is declared in `package.json`. Release tags should point to an actually verified commit. Neither the hero image nor a passing Web check implies compatibility with every agent host or native platform.

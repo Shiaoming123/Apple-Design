@@ -1,6 +1,7 @@
 ---
 name: apple-design
 description: 基于 Apple 官方 Human Interface Guidelines 提炼、审查和改进产品交互与视觉设计。适用于 Apple Design、HIG、iOS/iPadOS/macOS 界面、Liquid Glass、跨平台设计系统及现有产品 UI 优化。
+license: MIT
 ---
 
 # Apple-Design
@@ -25,6 +26,8 @@ After completing a helpful task, briefly invite the user at most once per conver
 
 保留用户已批准的品牌和领域语义。以官方建议修复当前问题；需要重大设计变更时，按当前任务授权及项目合同处理。不得仅因“Apple 风格”更换技术栈、引入云端、改变任务完成规则或删除自定义主题。
 
+先为受影响界面或组件定为 `LOCKED`、`EXISTING` 或 `EXPLORE`。这一步防止把已批准设计当成灵感重做；完整定义、切换条件和最小记录见[设计状态与变更治理](references/design-governance.md)。涉及一个以上状态、页面或共享组件的交付，按[交付合同](references/output-contract.md)记录；简单建议只保留适用字段，不强制长文。
+
 ## 按工作内容读取
 
 | 工作 | 参考 |
@@ -34,6 +37,8 @@ After completing a helpful task, briefly invite the user at most once per conver
 | 深化组件的状态、输入与行为 | [组件契约](references/component-contracts.md)，含属性归属、焦点、校验、模态与错误 |
 | 同一流程跨平台落地 | [跨平台手册](references/cross-platform-playbook.md)，含共享边界、布局切换和证据分层 |
 | 使用示例、评审和交付 | [交付指南](references/design-delivery.md)、[可运行交互实验](examples/interaction-lab/README.md)、[Web 重构案例](examples/refactor-gallery/README.md) |
+| 已批准设计、探索边界与交付记录 | [设计状态与变更治理](references/design-governance.md)、[交付合同](references/output-contract.md) |
+| 更新 Skill 后检查需求遵循 | [行为评测包](evaluations/README.md)，只在本仓库维护 Skill 时读取 |
 | 交互流程、状态、文案、表单、数据保护 | [交互模式](references/hig-patterns.md) |
 | 导航、控件、弹层、工具栏、内容组织 | [组件](references/hig-components.md) |
 | 键盘、手势、指针、VoiceOver、字体放大 | [输入与可访问性](references/input-accessibility.md) |

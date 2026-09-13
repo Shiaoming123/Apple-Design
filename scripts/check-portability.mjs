@@ -30,7 +30,7 @@ try {
   await cp(source, target, { recursive: true, filter: path => path !== join(source, 'agents') })
   await assert.rejects(access(join(target, 'agents')))
   const entry = await readFile(join(target, 'SKILL.md'), 'utf8')
-  assert.match(entry, /^---\r?\nname: apple-design\r?\ndescription: [^\r\n]+\r?\n---/)
+  assert.match(entry, /^---\r?\nname: apple-design\r?\ndescription: [^\r\n]+\r?\nlicense: MIT\r?\n---/)
   const files = await check(target)
   for (const file of ['index.html', 'app.mjs', 'style.css', 'comparisons.css', 'redesign.css']) {
     await access(join(target, 'examples/refactor-gallery', file))

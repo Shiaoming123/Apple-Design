@@ -18,7 +18,7 @@
   <img src="assets/apple-design-hero.png" width="1200" alt="Apple-Design 项目示意：页面流程、组件契约、跨平台映射、可访问性与证据驱动验收">
 </p>
 
-<p align="center"><sub>14 份专题手册 · 页面流程 · 组件契约 · 跨平台映射 · 证据驱动验收</sub></p>
+<p align="center"><sub>18 份专题手册 · 设计状态治理 · 组件契约 · 跨平台映射 · 证据驱动验收</sub></p>
 
 ---
 
@@ -147,9 +147,13 @@ npx skills add Shiaoming123/Apple-Design
 | 适配 | [跨平台手册](skills/apple-design/references/cross-platform-playbook.md) | 共享边界、布局切换与平台特有行为 |
 | 实现 | [代码实现与验收](skills/apple-design/references/code-implementation.md) | Vue/React/HTML、语义 token 与产品优化 |
 | 交付 | [设计交付指南](skills/apple-design/references/design-delivery.md) | 请求模板、评审记录与验证报告 |
+| 治理 | [设计状态与变更治理](skills/apple-design/references/design-governance.md) | 保护已批准设计、复用现有系统并限制探索范围 |
+| 输出 | [交付合同](skills/apple-design/references/output-contract.md) | 多页面或共享组件工作的简明评审记录 |
 | 设计工具 | [Figma 工作流](skills/apple-design/references/figma-workflow.md) | 设计文件与开发交接 |
 | 营销 | [营销页面](skills/apple-design/references/marketing-pages.md) | 仅用于明确要求的营销页面，不替代应用工作区设计 |
 | 维护 | [来源与覆盖范围](skills/apple-design/references/sources.md) | 官方入口、研究边界与更新方式 |
+
+[v0.2 开发计划](ROADMAP.md)记录已开始交付的防漂移合同与行为评测包，以及刻意延后的英文入口、Figma 深化、原生证据与贡献自动化。
 
 ## 运行交互示例
 
@@ -176,19 +180,24 @@ npm ci
 # 指向本机 Chrome/Edge 可执行文件；不下载浏览器
 $env:BROWSER_EXECUTABLE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
 npm run test:browser
+npm run test:gallery
+npm run test:portable
+npm run test:evaluations
 ```
 
 交互预览见示例目录的 README。测试数据只在内存；模拟失败不是生产网络。Windows/Edge 结果不代表 SwiftUI、WinUI、Compose 或真机通过。
 
 ### 已验证与未验证
 
-2026-09-11 的本地验证记录：
+2026-09-13 的本地验证记录：
 
 | 检查 | 结果与边界 |
 | --- | --- |
 | 发布包 | 本地链接、许可声明、个人路径规则、资源边界与 Skill 入口检查通过；不等同于完整安全审计 |
-| 模型测试 | 3 项通过：标题边界、保存结果、失败与重试 |
-| 浏览器交互 | Windows / Edge Chromium 152.0.4191.66 通过；覆盖校验、失败保留草稿、未保存关闭保护和焦点恢复 |
+| 模型测试 | 4 项通过：标题边界、保存结果、失败与重试，以及画廊路由归一化 |
+| 可迁移性 | 去掉可选宿主元数据后独立复制的包检查通过；可运行 `npm run test:portable` |
+| 行为评测包 | 六个带 rubric 的场景覆盖锁定设计、现有系统、探索、失败恢复、平台证据和来源边界；`npm run test:evaluations` 只验证评测包，不伪称能给其它模型自动评分 |
+| 浏览器交互 | Windows / Edge Chromium 153.0.4234.32 通过；覆盖校验、失败保留草稿、未保存关闭保护和焦点恢复 |
 | 显示与适配 | 1440 / 390 / 320 CSS px 宽度、长文本、200% CSS 文字、深色不透明与强制颜色检查通过 |
 | 运行错误 | 浏览器验收中 page error 与 console error 均为 0 |
 | 尚未验证 | Safari、Firefox、屏幕阅读器人工验收、原生壳、模拟器与真机；未获得无障碍合规认证 |
@@ -207,8 +216,9 @@ Apple-Design/
 │   ├── SKILL.md                Agent 入口
 │   ├── agents/openai.yaml      可选宿主展示元数据
 │   ├── LICENSE / PROVENANCE.md  随 Skill 分发的许可与来源
-│   ├── references/             14 份按需读取的参考
-│   └── examples/interaction-lab/  无运行依赖的交互示例
+│   ├── references/             18 份按需读取的参考
+│   ├── evaluations/            6 个可维护的 agent 行为场景
+│   └── examples/               交互实验与六组网页重构对比
 ├── scripts/                    发布包及浏览器检查
 └── tests/                      示例模型测试
 ```
@@ -219,7 +229,7 @@ Apple-Design/
 
 - 文档变更：给出适用平台、官方来源及核对日期，区分官方建议和项目的工程解释；不要提交官方文档的批量复制或全量翻译。
 - 示例变更：说明用户流程、失败状态及验证方式；不要提交真实用户数据、密钥、官方字体或未获许可的资源。
-- 代码变更：运行 `npm run check`、`npm test`，涉及可见交互时再运行 `npm run test:browser`；记录未验证的平台。
+- 代码变更：运行 `npm run check`、`npm test`、`npm run test:portable` 和 `npm run test:evaluations`；涉及可见交互时再运行 `npm run test:browser` 或 `npm run test:gallery`；记录未验证的平台。
 - 系统行为、尺寸或资源条款可能变化。维护时以对应官方来源为准，不把示例中的色值、圆角、断点或 CSS 模糊参数当作 Apple 的统一标准。
 
 版本以 `package.json` 为准。正式标签应指向实际已验证提交；本项目不以宣传图或测试通过推断所有宿主和平台均受支持。
